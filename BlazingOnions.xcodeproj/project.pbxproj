@@ -14,6 +14,7 @@
 		AB6AF13021404A80006444FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB6AF12E21404A80006444FA /* LaunchScreen.storyboard */; };
 		AB6AF13B21404A80006444FA /* BlazingOnionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6AF13A21404A80006444FA /* BlazingOnionsTests.swift */; };
 		AB6AF14621404A80006444FA /* BlazingOnionsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6AF14521404A80006444FA /* BlazingOnionsUITests.swift */; };
+		AB6AF15421404AA6006444FA /* ios in Resources */ = {isa = PBXBuildFile; fileRef = AB6AF15321404AA6006444FA /* ios */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		AB6AF14121404A80006444FA /* BlazingOnionsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlazingOnionsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB6AF14521404A80006444FA /* BlazingOnionsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlazingOnionsUITests.swift; sourceTree = "<group>"; };
 		AB6AF14721404A80006444FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB6AF15321404AA6006444FA /* ios */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ios; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 				AB6AF12721404A7F006444FA /* ViewController.swift */,
 				AB6AF12921404A7F006444FA /* Main.storyboard */,
 				AB6AF12C21404A80006444FA /* Assets.xcassets */,
+				AB6AF15321404AA6006444FA /* ios */,
 				AB6AF12E21404A80006444FA /* LaunchScreen.storyboard */,
 				AB6AF13121404A80006444FA /* Info.plist */,
 			);
@@ -231,6 +234,7 @@
 			files = (
 				AB6AF13021404A80006444FA /* LaunchScreen.storyboard in Resources */,
 				AB6AF12D21404A80006444FA /* Assets.xcassets in Resources */,
+				AB6AF15421404AA6006444FA /* ios in Resources */,
 				AB6AF12B21404A7F006444FA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
