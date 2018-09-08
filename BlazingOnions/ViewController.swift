@@ -10,14 +10,17 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    
+    @IBAction func goToHomePage(_ sender: UITapGestureRecognizer) {
+        let viewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "toHomePage") as UIViewController
+        self.present(viewController, animated: false, completion: nil)
+        
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 
