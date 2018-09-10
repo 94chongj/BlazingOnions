@@ -22,6 +22,8 @@ class HomePageViewController: UIViewController {
     @IBOutlet weak var dessertButton: UIButton!
     
     @IBAction func drinkButtonPressed(_ sender: UIButton) {
+        //[<BlazingOnions.DrinksViewController 0x7fb493e28ad0> setValue:forUndefinedKey:]: this class is not key value coding-compliant for the key dessertButton.' Wasn't an issue before I tried jumping to the "toDrinksPage"
+
         if isButtonActive == true {
             foodButton.setImage(#imageLiteral(resourceName: "Burger_Icon_inactive"), for: UIControlState.normal)
             dessertButton.setImage(#imageLiteral(resourceName: "Dessert_icon_inactive"), for: UIControlState.normal)
@@ -35,8 +37,9 @@ class HomePageViewController: UIViewController {
             sender.imageView?.contentMode = .scaleAspectFit
             sender.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
             isButtonActive = true
+            let HomePageViewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "toDrinksPage") as UIViewController
+            self.present(HomePageViewController, animated: false, completion: nil)
             }
-        print(isButtonActive)
     }
     
     @IBAction func foodButtonPressed(_ sender: UIButton) {
@@ -73,6 +76,8 @@ class HomePageViewController: UIViewController {
             sender.imageView?.contentMode = .scaleAspectFit
             sender.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
             isButtonActive = true
+            let HomePageViewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "toDessertPage") as UIViewController
+            self.present(HomePageViewController, animated: false, completion: nil)
         }
         print(isButtonActive)
     }

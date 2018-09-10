@@ -460,6 +460,9 @@
                                             <constraint firstAttribute="height" constant="66" id="zN0-SN-Z8L"/>
                                         </constraints>
                                         <state key="normal" image="Burger_Icon_inactive"/>
+                                        <connections>
+                                            <action selector="foodButtonPressed:" destination="NHW-5c-Wbb" eventType="touchUpInside" id="MgG-fh-pEN"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OcN-zm-v5w" userLabel="DessertButton">
                                         <rect key="frame" x="23" y="375" width="95" height="95"/>
@@ -469,7 +472,7 @@
                                         </constraints>
                                         <state key="normal" image="Dessert_icon_inactive"/>
                                         <connections>
-                                            <action selector="dessertButtonPressed:" destination="NHW-5c-Wbb" eventType="touchUpInside" id="6qG-0c-3aF"/>
+                                            <action selector="dessertButtonPressed:" destination="NHW-5c-Wbb" eventType="touchUpInside" id="gEw-jE-7IW"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hg5-mm-ODE" userLabel="WaiterButton">
@@ -800,7 +803,6 @@
                         <viewLayoutGuide key="safeArea" id="C5d-pW-3hb"/>
                     </view>
                     <connections>
-                        <outlet property="dessertButton" destination="OcN-zm-v5w" id="f00-I4-mTb"/>
                         <outlet property="drinkButton" destination="Dpa-Xb-D8G" id="3BD-3n-dwJ"/>
                         <outlet property="foodButton" destination="SWt-C1-Qjk" id="vbN-fz-Gdy"/>
                         <outlet property="gourmetImage" destination="AVr-su-R4P" id="LaS-iW-nm5"/>
@@ -954,7 +956,7 @@
                                         <rect key="frame" x="13" y="10" width="114" height="89"/>
                                         <state key="normal" image="logo"/>
                                         <connections>
-                                            <action selector="toHomeButton:" destination="pEs-CO-nBS" eventType="touchUpInside" id="kTD-5U-zdz"/>
+                                            <action selector="homeButtonPressed:" destination="pEs-CO-nBS" eventType="touchUpInside" id="8Dt-oc-Jpb"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EO4-Aa-Pjf" userLabel="DrinkButton">
@@ -965,7 +967,7 @@
                                         </constraints>
                                         <state key="normal" image="Drink_Icon_inactive"/>
                                         <connections>
-                                            <action selector="drinkButtonPressed:" destination="pEs-CO-nBS" eventType="touchUpInside" id="Kkg-j1-DqR"/>
+                                            <action selector="drinkButtonPressed:" destination="pEs-CO-nBS" eventType="touchUpInside" id="o0h-xr-bEY"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vRT-MN-gfT" userLabel="BurgerButton">
@@ -975,6 +977,9 @@
                                             <constraint firstAttribute="height" constant="66" id="lYA-BG-vPF"/>
                                         </constraints>
                                         <state key="normal" image="Burger_Icon_inactive"/>
+                                        <connections>
+                                            <action selector="foodButtonPressed:" destination="pEs-CO-nBS" eventType="touchUpInside" id="NJf-UO-FG8"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yZz-au-FgP" userLabel="DessertButton">
                                         <rect key="frame" x="23" y="375" width="95" height="95"/>
@@ -984,7 +989,7 @@
                                         </constraints>
                                         <state key="normal" image="Dessert_icon_inactive"/>
                                         <connections>
-                                            <action selector="dessertButtonPressed:" destination="pEs-CO-nBS" eventType="touchUpInside" id="8t2-mu-prI"/>
+                                            <action selector="dessertButtonPressed:" destination="pEs-CO-nBS" eventType="touchUpInside" id="n8l-gi-wie"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Kf-d4-VnB" userLabel="WaiterButton">
@@ -994,9 +999,6 @@
                                             <constraint firstAttribute="width" constant="67" id="g1u-fJ-7XX"/>
                                         </constraints>
                                         <state key="normal" image="Waiter_icon_inactive"/>
-                                        <connections>
-                                            <action selector="waiterButtonPressed:" destination="pEs-CO-nBS" eventType="touchUpInside" id="OSA-b0-j3g"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.28627450980000002" green="0.058823529409999999" blue="0.0039215686269999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1051,9 +1053,6 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SLi-wG-x28" userLabel="TotalButton">
                                         <rect key="frame" x="0.0" y="0.0" width="140" height="136"/>
-                                        <connections>
-                                            <action selector="totalButton:" destination="pEs-CO-nBS" eventType="touchUpInside" id="tcp-xC-MBE"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.28627450980000002" green="0.058823529409999999" blue="0.0039215686269999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1086,7 +1085,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SvQ-BP-WaX">
                                                 <rect key="frame" x="0.0" y="0.0" width="140" height="384"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wQt-W4-Eye" userLabel="friesImage">
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wQt-W4-Eye" userLabel="fountainImage">
                                                         <rect key="frame" x="48" y="128" width="45" height="95"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <state key="normal" image="fountain_icon_inactive"/>
@@ -1098,9 +1097,12 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Pa-WY-ZKG" userLabel="App&amp;SidesButton">
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Pa-WY-ZKG" userLabel="fountainButton">
                                                         <rect key="frame" x="0.0" y="5" width="140" height="376"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <connections>
+                                                            <action selector="fountainButtonPressed:" destination="pEs-CO-nBS" eventType="touchUpInside" id="CPj-bK-cor"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1123,6 +1125,9 @@
                                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cS3-lv-kbP" userLabel="GourmetFoodButton">
                                                         <rect key="frame" x="-2" y="0.0" width="142" height="376"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <connections>
+                                                            <action selector="barButtonPressed:" destination="pEs-CO-nBS" eventType="touchUpInside" id="94V-Gu-SST"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1165,10 +1170,9 @@
                         <viewLayoutGuide key="safeArea" id="qs1-F4-3Ht"/>
                     </view>
                     <connections>
-                        <outlet property="dessertButton" destination="yZz-au-FgP" id="pYf-1v-CeX"/>
-                        <outlet property="drinkButton" destination="EO4-Aa-Pjf" id="FNT-3X-GxO"/>
-                        <outlet property="foodButton" destination="vRT-MN-gfT" id="scD-Y1-7EW"/>
-                        <outlet property="gourmetImage" destination="cXT-8F-VbS" id="lWz-c1-iPv"/>
+                        <outlet property="barButton" destination="cXT-8F-VbS" id="v07-eo-Xec"/>
+                        <outlet property="drinkButton" destination="EO4-Aa-Pjf" id="bPc-mk-Te3"/>
+                        <outlet property="fountainButton" destination="wQt-W4-Eye" id="lKe-Rs-Jyd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JeT-Uj-2nF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1193,7 +1197,7 @@
                                         <rect key="frame" x="13" y="10" width="114" height="89"/>
                                         <state key="normal" image="logo"/>
                                         <connections>
-                                            <action selector="toHomeButton:" destination="1UJ-aN-R9r" eventType="touchUpInside" id="JHV-RG-agy"/>
+                                            <action selector="homeButtonPressed:" destination="1UJ-aN-R9r" eventType="touchUpInside" id="Lxn-5B-a6v"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LAx-He-yha" userLabel="DrinkButton">
@@ -1204,7 +1208,6 @@
                                         </constraints>
                                         <state key="normal" image="Drink_Icon_inactive"/>
                                         <connections>
-                                            <action selector="drinkButtonPressed:" destination="1UJ-aN-R9r" eventType="touchUpInside" id="N00-6U-Zvl"/>
                                             <action selector="drinksButtonPressed:" destination="1UJ-aN-R9r" eventType="touchUpInside" id="MNi-qo-3ja"/>
                                         </connections>
                                     </button>

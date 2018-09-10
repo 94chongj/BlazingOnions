@@ -16,6 +16,12 @@ class DessertViewController: UIViewController {
     @IBOutlet weak var foodButton: UIButton!
     var isButtonActive: Bool = true
     
+    @IBAction func homeButtonPressed(_ sender: UIButton) {
+        let DessertViewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "toHomePage") as UIViewController
+        self.present(DessertViewController, animated: false, completion: nil)
+    }
+    
+    
     @IBAction func drinksButtonPressed(_ sender: UIButton) {
         if isButtonActive == true {
             foodButton.setImage(#imageLiteral(resourceName: "Burger_Icon_inactive"), for: UIControlState.normal)
@@ -36,7 +42,7 @@ class DessertViewController: UIViewController {
     
     
     @IBAction func foodButtonPressed(_ sender: UIButton) {
-        if isButtonActive == true {
+        /*if isButtonActive == true {
             drinkButton.setImage(#imageLiteral(resourceName: "Drink_Icon_inactive"), for: UIControlState.normal)
             dessertButton.setImage(#imageLiteral(resourceName: "Dessert_icon_inactive"), for: UIControlState.normal)
         }
@@ -44,16 +50,17 @@ class DessertViewController: UIViewController {
             sender.setImage(#imageLiteral(resourceName: "Burger_Icon_inactive"), for: UIControlState.normal)
             isButtonActive = false
         }
-        else {
-            sender.setImage(#imageLiteral(resourceName: "Burger_Icon_active"), for: UIControlState.normal)
-            sender.imageView?.contentMode = .scaleAspectFit
-            sender.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
-            isButtonActive = true
-            let HomePageViewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "toFoodPage") as UIViewController
-            self.present(HomePageViewController, animated: false, completion: nil)
-        }
+        else {*/
+        sender.setImage(#imageLiteral(resourceName: "Burger_Icon_active"), for: UIControlState.normal)
+        sender.imageView?.contentMode = .scaleAspectFit
+        sender.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
+        isButtonActive = true
+        let HomePageViewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "toFoodPage") as UIViewController
+        self.present(HomePageViewController, animated: false, completion: nil)
     
     }
+    
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)

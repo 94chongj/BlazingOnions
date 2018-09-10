@@ -15,7 +15,7 @@ class FoodViewController: UIViewController {
     @IBOutlet weak var drinkButton: UIButton!
     @IBOutlet weak var foodButton: UIButton!
     @IBOutlet weak var gourmetImage: UIButton!
-    @IBOutlet weak var dessertButton: UIButton!
+    //@IBOutlet weak var dessertButton: UIButton!
     
     
     @IBAction func toHomeButton(_ sender: UIButton) {
@@ -24,7 +24,7 @@ class FoodViewController: UIViewController {
     }
     
     @IBAction func drinkButtonPressed(_ sender: UIButton) {
-        if isButtonActive == true {
+        /*if isButtonActive == true {
             foodButton.setImage(#imageLiteral(resourceName: "Burger_Icon_inactive"), for: UIControlState.normal)
             dessertButton.setImage(#imageLiteral(resourceName: "Dessert_icon_inactive"), for: UIControlState.normal)
         }
@@ -32,18 +32,22 @@ class FoodViewController: UIViewController {
             sender.setImage(#imageLiteral(resourceName: "Drink_Icon_inactive"), for: UIControlState.normal)
             isButtonActive = false
         }
-        else {
-            sender.setImage(#imageLiteral(resourceName: "Drink_Icon_active"), for: UIControlState.normal)
-            sender.imageView?.contentMode = .scaleAspectFit
-            sender.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
-            let FoodViewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "toDrinksPage") as UIViewController
-            self.present(FoodViewController, animated: false, completion: nil)
-        }
+        else { */
+        sender.setImage(#imageLiteral(resourceName: "Drink_Icon_active"), for: UIControlState.normal)
+        sender.imageView?.contentMode = .scaleAspectFit
+        sender.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
+        let FoodViewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "toDrinksPage") as UIViewController
+        self.present(FoodViewController, animated: false, completion: nil)
+    }
+    
+    
+    @IBAction func foodButtonPressed(_ sender: UIButton) {
+        
     }
     
     
     @IBAction func dessertButtonPressed(_ sender: UIButton) {
-        if isButtonActive == true {
+        /*if isButtonActive == true {
             drinkButton.setImage(#imageLiteral(resourceName: "Drink_Icon_inactive"), for: UIControlState.normal)
             foodButton.setImage(#imageLiteral(resourceName: "Burger_Icon_inactive"), for: UIControlState.normal)
         }
@@ -51,13 +55,12 @@ class FoodViewController: UIViewController {
             sender.setImage(#imageLiteral(resourceName: "Dessert_icon_inactive"), for: UIControlState.normal)
             isButtonActive = false
         }
-        else {
-            sender.setImage(#imageLiteral(resourceName: "Dessert_icon_active"), for: UIControlState.normal)
-            sender.imageView?.contentMode = .scaleAspectFit
-            sender.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
-            let FoodViewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "toDessertPage") as UIViewController
-            self.present(FoodViewController, animated: false, completion: nil)
-        }
+        else { */
+        sender.setImage(#imageLiteral(resourceName: "Dessert_icon_active"), for: UIControlState.normal)
+        sender.imageView?.contentMode = .scaleAspectFit
+        sender.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
+        let FoodViewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "toDessertPage") as UIViewController
+        self.present(FoodViewController, animated: false, completion: nil)
     }
     
     @IBAction func totalButton(_ sender: UIButton) {
