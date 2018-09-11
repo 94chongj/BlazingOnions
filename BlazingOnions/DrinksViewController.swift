@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DrinksViewController: UIViewController {
+class DrinksViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     
     
     @IBOutlet weak var drinkButton: UIButton!
@@ -64,8 +64,28 @@ class DrinksViewController: UIViewController {
     }
     
     
+    @IBOutlet var drinksCollectionView: UICollectionView!
+    
+    let dataSource = DataSource()
+    
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.bounds.size.width/3, height: collectionView.bounds.size.width/3)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        drinksCollectionView!.register(drinkCell.self, forCellWithReuseIdentifier: "Cell")
+        drinksCollectionView.dataSource = dataSource
+        //requires setting collectionView.delegate to self in order for extension to work
+        self.drinksCollectionView.delegate = self
+        if let layout = drinksCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.scrollDirection = .horizontal
+            layout.minimumLineSpacing = 1 //in between columns
+            layout.minimumInteritemSpacing = 1 //in between rows
+        }
+        drinksCollectionView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {

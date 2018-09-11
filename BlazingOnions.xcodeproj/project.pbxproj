@@ -14,6 +14,8 @@
 		AB6AF13021404A80006444FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB6AF12E21404A80006444FA /* LaunchScreen.storyboard */; };
 		AB6AF13B21404A80006444FA /* BlazingOnionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6AF13A21404A80006444FA /* BlazingOnionsTests.swift */; };
 		AB6AF14621404A80006444FA /* BlazingOnionsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6AF14521404A80006444FA /* BlazingOnionsUITests.swift */; };
+		ABAA022D21470BF100C0A76B /* DrinksDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAA022C21470BF100C0A76B /* DrinksDataSource.swift */; };
+		ABAA023321471E9A00C0A76B /* drinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAA023221471E9A00C0A76B /* drinkCell.swift */; };
 		ABADF9B221430988002B2E0C /* totalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABADF9B121430988002B2E0C /* totalViewController.swift */; };
 		ABADF9B421433445002B2E0C /* FoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABADF9B321433445002B2E0C /* FoodViewController.swift */; };
 		ABADF9B6214343EE002B2E0C /* DrinksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABADF9B5214343EE002B2E0C /* DrinksViewController.swift */; };
@@ -52,6 +54,8 @@
 		AB6AF14121404A80006444FA /* BlazingOnionsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlazingOnionsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB6AF14521404A80006444FA /* BlazingOnionsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlazingOnionsUITests.swift; sourceTree = "<group>"; };
 		AB6AF14721404A80006444FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ABAA022C21470BF100C0A76B /* DrinksDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinksDataSource.swift; sourceTree = "<group>"; };
+		ABAA023221471E9A00C0A76B /* drinkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = drinkCell.swift; sourceTree = "<group>"; };
 		ABADF9B121430988002B2E0C /* totalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = totalViewController.swift; sourceTree = "<group>"; };
 		ABADF9B321433445002B2E0C /* FoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodViewController.swift; sourceTree = "<group>"; };
 		ABADF9B5214343EE002B2E0C /* DrinksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinksViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +122,8 @@
 				ABADF9B321433445002B2E0C /* FoodViewController.swift */,
 				ABADF9B5214343EE002B2E0C /* DrinksViewController.swift */,
 				ABADF9B721434412002B2E0C /* DessertViewController.swift */,
+				ABAA022C21470BF100C0A76B /* DrinksDataSource.swift */,
+				ABAA023221471E9A00C0A76B /* drinkCell.swift */,
 			);
 			path = BlazingOnions;
 			sourceTree = "<group>";
@@ -273,11 +279,13 @@
 			files = (
 				AB6AF12821404A7F006444FA /* ViewController.swift in Sources */,
 				ABADF9B421433445002B2E0C /* FoodViewController.swift in Sources */,
+				ABAA023321471E9A00C0A76B /* drinkCell.swift in Sources */,
 				AB6AF12621404A7F006444FA /* AppDelegate.swift in Sources */,
 				ABADF9B6214343EE002B2E0C /* DrinksViewController.swift in Sources */,
 				ABADF9B821434412002B2E0C /* DessertViewController.swift in Sources */,
 				ABF260672141A31C0003EF1F /* HomePageViewController.swift in Sources */,
 				ABADF9B221430988002B2E0C /* totalViewController.swift in Sources */,
+				ABAA022D21470BF100C0A76B /* DrinksDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

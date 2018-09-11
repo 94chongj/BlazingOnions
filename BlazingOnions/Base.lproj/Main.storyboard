@@ -574,7 +574,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OuJ-kU-uEJ">
                                                 <rect key="frame" x="0.0" y="0.0" width="140" height="128"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AQv-y0-be4" userLabel="friesImage">
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AQv-y0-be4" userLabel="appetizersButton">
                                                         <rect key="frame" x="42" y="9" width="56" height="63"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <state key="normal" image="fries_icon-inactive"/>
@@ -596,6 +596,9 @@
                                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Xr-Em-cJa" userLabel="App&amp;SidesButton">
                                                         <rect key="frame" x="0.0" y="0.0" width="140" height="128"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <connections>
+                                                            <action selector="appetizersButtonPressed:" destination="NHW-5c-Wbb" eventType="touchUpInside" id="NB3-RW-8Yr"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -625,6 +628,9 @@
                                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L0G-t9-m3l" userLabel="GourmetFoodButton">
                                                         <rect key="frame" x="0.0" y="8" width="140" height="109.5"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <connections>
+                                                            <action selector="gourmetButtonPressed:" destination="NHW-5c-Wbb" eventType="touchUpInside" id="cYY-sb-mOM"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -654,6 +660,9 @@
                                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mt8-HS-fX6" userLabel="SandwhichButton">
                                                         <rect key="frame" x="0.0" y="9" width="140" height="110"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <connections>
+                                                            <action selector="sandwhichButtonPressed:" destination="NHW-5c-Wbb" eventType="touchUpInside" id="I3G-cq-CKW"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -683,6 +692,9 @@
                                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H4l-A2-cAa" userLabel="SSCButton">
                                                         <rect key="frame" x="-1" y="8" width="140" height="109.5"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <connections>
+                                                            <action selector="soupButtonPressed:" destination="NHW-5c-Wbb" eventType="touchUpInside" id="5uk-Vz-D2N"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -712,6 +724,9 @@
                                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RfA-6T-phF" userLabel="Entrees&amp;FishButton">
                                                         <rect key="frame" x="0.0" y="8" width="140" height="110"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <connections>
+                                                            <action selector="entreeButtonPressed:" destination="NHW-5c-Wbb" eventType="touchUpInside" id="4bm-FY-pgk"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -719,7 +734,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="plI-gv-tFr">
                                                 <rect key="frame" x="0.0" y="640" width="140" height="128"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exO-wI-Odf" userLabel="gourmetImage">
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exO-wI-Odf" userLabel="blazerImage">
                                                         <rect key="frame" x="34" y="22" width="72.5" height="50"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <state key="normal" image="Burger_Icon_inactive"/>
@@ -741,6 +756,9 @@
                                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Pl-6c-mb3" userLabel="BlazersButton">
                                                         <rect key="frame" x="0.0" y="5" width="140" height="109.5"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <connections>
+                                                            <action selector="blazersButtonPressed:" destination="NHW-5c-Wbb" eventType="touchUpInside" id="Imk-9w-HjM"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -803,9 +821,15 @@
                         <viewLayoutGuide key="safeArea" id="C5d-pW-3hb"/>
                     </view>
                     <connections>
+                        <outlet property="appetizersButton" destination="AQv-y0-be4" id="YaA-b1-71Z"/>
+                        <outlet property="blazersButton" destination="exO-wI-Odf" id="isx-J0-Rns"/>
+                        <outlet property="dessertButton" destination="OcN-zm-v5w" id="lSg-43-gHM"/>
                         <outlet property="drinkButton" destination="Dpa-Xb-D8G" id="3BD-3n-dwJ"/>
+                        <outlet property="entreeButton" destination="BaK-4f-msR" id="kvw-2t-vlB"/>
                         <outlet property="foodButton" destination="SWt-C1-Qjk" id="vbN-fz-Gdy"/>
                         <outlet property="gourmetImage" destination="AVr-su-R4P" id="LaS-iW-nm5"/>
+                        <outlet property="sandwhichButton" destination="09C-Sa-YcT" id="EvN-00-39g"/>
+                        <outlet property="soupButton" destination="Nhc-5v-wCb" id="MSo-Oi-xan"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="30N-w4-Edr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1150,6 +1174,38 @@
                                     <constraint firstItem="ARd-gr-DPU" firstAttribute="leading" secondItem="o91-Rl-RTu" secondAttribute="leading" id="paw-38-dt1"/>
                                 </constraints>
                             </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uxb-i5-g27">
+                                <rect key="frame" x="278" y="0.0" width="746" height="768"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="WmH-a6-TCq">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="Ab8-2R-ywV" customClass="drinkCell" customModule="BlazingOnions" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HxA-G0-lb4" userLabel="button1">
+                                                    <rect key="frame" x="0.0" y="34" width="25" height="16"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpu-8E-poU" userLabel="button2">
+                                                    <rect key="frame" x="25" y="34" width="25" height="16"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </button>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -1172,6 +1228,7 @@
                     <connections>
                         <outlet property="barButton" destination="cXT-8F-VbS" id="v07-eo-Xec"/>
                         <outlet property="drinkButton" destination="EO4-Aa-Pjf" id="bPc-mk-Te3"/>
+                        <outlet property="drinksCollectionView" destination="uxb-i5-g27" id="o3o-nQ-gaO"/>
                         <outlet property="fountainButton" destination="wQt-W4-Eye" id="lKe-Rs-Jyd"/>
                     </connections>
                 </viewController>
