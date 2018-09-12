@@ -28,6 +28,7 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
     var numCount: [Int] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     
     @IBOutlet var burgerCollectionView: UICollectionView!
+    @IBOutlet var foodTopLabel: UILabel!
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
         let cell = burgerCollectionView.cellForItem(at: IndexPath(row: sender.tag, section: 0)) as! BurgerCollectionViewCell
@@ -98,6 +99,8 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         appetizersButton.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
         returnInactiveIcons(buttonID: 0)
         servingSoonView.isHidden = false
+        burgerCollectionView.isHidden = true
+        foodTopLabel.isHidden = true
     }
     
     @IBAction func gourmetButtonPressed(_ sender: UIButton) {
@@ -106,6 +109,8 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         gourmetImage.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
         returnInactiveIcons(buttonID: 1)
         servingSoonView.isHidden = true
+        burgerCollectionView.isHidden = false
+        foodTopLabel.isHidden = false
     }
     
     @IBAction func sandwhichButtonPressed(_ sender: UIButton) {
@@ -114,6 +119,8 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         sandwhichButton.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
         returnInactiveIcons(buttonID: 2)
         servingSoonView.isHidden = false
+        burgerCollectionView.isHidden = true
+        foodTopLabel.isHidden = true
     }
     
     @IBAction func soupButtonPressed(_ sender: UIButton) {
@@ -122,6 +129,8 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         soupButton.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
         returnInactiveIcons(buttonID: 3)
         servingSoonView.isHidden = false
+        burgerCollectionView.isHidden = true
+        foodTopLabel.isHidden = true
     }
     
     
@@ -131,6 +140,8 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         entreeButton.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
         returnInactiveIcons(buttonID: 4)
         servingSoonView.isHidden = false
+        burgerCollectionView.isHidden = true
+        foodTopLabel.isHidden = true
     }
     
     @IBAction func blazersButtonPressed(_ sender: UIButton) {
@@ -139,6 +150,8 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         blazersButton.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
         returnInactiveIcons(buttonID: 5)
         servingSoonView.isHidden = false
+        burgerCollectionView.isHidden = true
+        foodTopLabel.isHidden = true
     }
     
     func returnInactiveIcons(buttonID: Int) {
