@@ -11,10 +11,9 @@ import UIKit
 class ViewController: UIViewController {
 
     
-    @IBAction func goToHomePage(_ sender: UITapGestureRecognizer) {
+    @IBAction func toHomePage(_ sender: UIButton) {
         let viewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "toHomePage") as UIViewController
         self.present(viewController, animated: false, completion: nil)
-        
     }
     
     

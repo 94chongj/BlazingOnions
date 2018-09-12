@@ -60,6 +60,10 @@ class DessertViewController: UIViewController {
     
     }
     
+    @IBAction func totalButtonPressed(_ sender: UIButton) {
+        let DessertViewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "toTotalPage") as UIViewController
+            self.present(DessertViewController, animated: false, completion: nil)
+    }
     
     
     override func viewDidAppear(_ animated: Bool) {

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BurgerCollectionViewCell" id="gTV-IL-0wX" customClass="BurgerCollectionViewCell" customModule="BlazingOnions" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UqN-WR-CkV" userLabel="Cell View">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RCT-2c-f1j" userLabel="Burger Image View">
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="aqq-0t-x2D">
+                                <rect key="frame" x="0.0" y="159" width="200" height="41"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Qc-GG-2vb">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="41"/>
+                                        <color key="backgroundColor" red="0.97216194060000005" green="0.57543643899999997" blue="0.40617766199999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hcs-Y7-ZuC">
+                                        <rect key="frame" x="100" y="0.0" width="100" height="41"/>
+                                        <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rqm-N3-2Mh">
+                                <rect key="frame" x="90" y="146" width="20" height="20"/>
+                                <color key="backgroundColor" red="0.81568627449999997" green="0.63137254899999995" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Rqm-N3-2Mh" firstAttribute="top" secondItem="UqN-WR-CkV" secondAttribute="top" constant="146" id="3A6-f1-HVK"/>
+                            <constraint firstAttribute="bottom" secondItem="Rqm-N3-2Mh" secondAttribute="bottom" constant="34" id="4L3-6h-cHO"/>
+                            <constraint firstAttribute="bottom" secondItem="RCT-2c-f1j" secondAttribute="bottom" id="56a-j0-2hz"/>
+                            <constraint firstAttribute="trailing" secondItem="RCT-2c-f1j" secondAttribute="trailing" id="5F4-8D-uot"/>
+                            <constraint firstAttribute="trailing" secondItem="aqq-0t-x2D" secondAttribute="trailing" id="5lN-Mm-TMW"/>
+                            <constraint firstAttribute="bottom" secondItem="aqq-0t-x2D" secondAttribute="bottom" id="B6M-ek-dJx"/>
+                            <constraint firstItem="aqq-0t-x2D" firstAttribute="top" secondItem="UqN-WR-CkV" secondAttribute="top" constant="159" id="DrU-5w-POh"/>
+                            <constraint firstAttribute="trailing" secondItem="Rqm-N3-2Mh" secondAttribute="trailing" constant="90" id="Igc-67-05V"/>
+                            <constraint firstItem="RCT-2c-f1j" firstAttribute="top" secondItem="UqN-WR-CkV" secondAttribute="top" id="JUM-LK-zdQ"/>
+                            <constraint firstItem="Rqm-N3-2Mh" firstAttribute="leading" secondItem="UqN-WR-CkV" secondAttribute="leading" constant="90" id="KHJ-qR-MT1"/>
+                            <constraint firstItem="aqq-0t-x2D" firstAttribute="leading" secondItem="UqN-WR-CkV" secondAttribute="leading" id="hY8-8Z-n8D"/>
+                            <constraint firstItem="RCT-2c-f1j" firstAttribute="leading" secondItem="UqN-WR-CkV" secondAttribute="leading" id="wvK-ms-Olw"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="UqN-WR-CkV" secondAttribute="bottom" id="2ZB-Qs-CPP"/>
+                <constraint firstItem="UqN-WR-CkV" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="9qv-7U-g9V"/>
+                <constraint firstItem="UqN-WR-CkV" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="DXg-Ry-rYs"/>
+                <constraint firstAttribute="trailing" secondItem="UqN-WR-CkV" secondAttribute="trailing" id="I02-Qs-z6J"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="217" height="205"/>
+            <connections>
+                <outlet property="addButton" destination="0Qc-GG-2vb" id="TvJ-kE-zIY"/>
+                <outlet property="burgerImageView" destination="RCT-2c-f1j" id="HDs-re-ed8"/>
+                <outlet property="cellView" destination="UqN-WR-CkV" id="3Dz-E2-WHY"/>
+                <outlet property="countLabel" destination="Rqm-N3-2Mh" id="cHk-CR-yUa"/>
+                <outlet property="minusButton" destination="hcs-Y7-ZuC" id="el4-6i-aCy"/>
+            </connections>
+            <point key="canvasLocation" x="62" y="-24"/>
+        </collectionViewCell>
+    </objects>
+</document>

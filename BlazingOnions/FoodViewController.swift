@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FoodViewController: UIViewController {
+class FoodViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     var isButtonActive: Bool = false
     
@@ -22,6 +22,43 @@ class FoodViewController: UIViewController {
     @IBOutlet weak var soupButton: UIButton!
     @IBOutlet weak var entreeButton: UIButton!
     @IBOutlet weak var blazersButton: UIButton!
+    @IBOutlet var servingSoonView: UIView!
+    
+    var images: [UIImage] = [#imageLiteral(resourceName: "Burger_option_9"),#imageLiteral(resourceName: "Burger_option_1"),#imageLiteral(resourceName: "Burger_option_2"),#imageLiteral(resourceName: "Burger_option_3"),#imageLiteral(resourceName: "Burger_option_4"),#imageLiteral(resourceName: "Burger_option_5"),#imageLiteral(resourceName: "Burger_option_6"),#imageLiteral(resourceName: "Burger_option_7"),#imageLiteral(resourceName: "Burger_option_8"),#imageLiteral(resourceName: "Burger_option_9"),#imageLiteral(resourceName: "Burger_option_1"),#imageLiteral(resourceName: "Burger_option_2"),#imageLiteral(resourceName: "Burger_option_3"),#imageLiteral(resourceName: "Burger_option_4"),#imageLiteral(resourceName: "Burger_option_5"),#imageLiteral(resourceName: "Burger_option_6"),#imageLiteral(resourceName: "Burger_option_7"),#imageLiteral(resourceName: "Burger_option_8")]
+    var numCount: [Int] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    
+    @IBOutlet var burgerCollectionView: UICollectionView!
+    
+    @IBAction func addButtonTapped(_ sender: UIButton) {
+        let cell = burgerCollectionView.cellForItem(at: IndexPath(row: sender.tag, section: 0)) as! BurgerCollectionViewCell
+        UILabel.animate(withDuration: 0.5, delay: 0, options: .transitionCrossDissolve, animations: {cell.countLabel.alpha = 0}, completion: nil)
+        numCount[sender.tag] = numCount[sender.tag] + 1
+        cell.countLabel.text = String(numCount[sender.tag])
+        UILabel.animate(withDuration: 0.5, delay: 0, options: .transitionCrossDissolve, animations: {cell.countLabel.alpha = 1}, completion: nil)
+        
+    }
+    
+    @IBAction func minusButtonTapped(_ sender: UIButton) {
+        //1 to 0 transition is not smooth on button
+        let cell = burgerCollectionView.cellForItem(at: IndexPath(row: sender.tag, section: 0)) as! BurgerCollectionViewCell
+        if numCount[sender.tag] == 0 {
+            numCount[sender.tag] = 0
+            cell.countLabel.text = String(numCount[sender.tag])
+        }
+        else {
+            UILabel.animate(withDuration: 0.5, delay: 0, options: .transitionCrossDissolve, animations: {cell.countLabel.alpha = 0}, completion: nil)
+            numCount[sender.tag] = numCount[sender.tag] - 1
+            cell.countLabel.text = String(numCount[sender.tag])
+            UILabel.animate(withDuration: 0.5, delay: 0, options: .transitionCrossDissolve, animations: {cell.countLabel.alpha = 1}, completion: nil)
+            if numCount[sender.tag] == 0 {
+                UILabel.animate(withDuration: 0.5, delay: 0, options: .transitionCrossDissolve, animations: {cell.countLabel.alpha = 0}, completion: nil)
+            }
+            if numCount[sender.tag] != 0 {
+                UILabel.animate(withDuration: 0.5, delay: 0, options: .transitionCrossDissolve, animations: {cell.countLabel.alpha = 1}, completion: nil)
+            }
+        }
+    }
+    
     
     @IBAction func toHomeButton(_ sender: UIButton) {
         let FoodViewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "toHomePage") as UIViewController
@@ -60,6 +97,7 @@ class FoodViewController: UIViewController {
         appetizersButton.imageView?.contentMode = .scaleAspectFit
         appetizersButton.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
         returnInactiveIcons(buttonID: 0)
+        servingSoonView.isHidden = false
     }
     
     @IBAction func gourmetButtonPressed(_ sender: UIButton) {
@@ -67,6 +105,7 @@ class FoodViewController: UIViewController {
         gourmetImage.imageView?.contentMode = .scaleAspectFit
         gourmetImage.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
         returnInactiveIcons(buttonID: 1)
+        servingSoonView.isHidden = true
     }
     
     @IBAction func sandwhichButtonPressed(_ sender: UIButton) {
@@ -74,6 +113,7 @@ class FoodViewController: UIViewController {
         sandwhichButton.imageView?.contentMode = .scaleAspectFit
         sandwhichButton.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
         returnInactiveIcons(buttonID: 2)
+        servingSoonView.isHidden = false
     }
     
     @IBAction func soupButtonPressed(_ sender: UIButton) {
@@ -81,6 +121,7 @@ class FoodViewController: UIViewController {
         soupButton.imageView?.contentMode = .scaleAspectFit
         soupButton.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
         returnInactiveIcons(buttonID: 3)
+        servingSoonView.isHidden = false
     }
     
     
@@ -89,6 +130,7 @@ class FoodViewController: UIViewController {
         entreeButton.imageView?.contentMode = .scaleAspectFit
         entreeButton.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
         returnInactiveIcons(buttonID: 4)
+        servingSoonView.isHidden = false
     }
     
     @IBAction func blazersButtonPressed(_ sender: UIButton) {
@@ -96,6 +138,7 @@ class FoodViewController: UIViewController {
         blazersButton.imageView?.contentMode = .scaleAspectFit
         blazersButton.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
         returnInactiveIcons(buttonID: 5)
+        servingSoonView.isHidden = false
     }
     
     func returnInactiveIcons(buttonID: Int) {
@@ -108,7 +151,7 @@ class FoodViewController: UIViewController {
                 
             }
             else if iconsArray[button] == gourmetImage {
-                itemIcon = #imageLiteral(resourceName: "Burger_Icon_inactive")
+                itemIcon = #imageLiteral(resourceName: "Burger_-inactive")
                 
             }
             else if iconsArray[button] == sandwhichButton {
@@ -124,12 +167,16 @@ class FoodViewController: UIViewController {
                 
             }
             else {
-                itemIcon = #imageLiteral(resourceName: "Burger_Icon_inactive")
-                
+                itemIcon = #imageLiteral(resourceName: "Burger_-inactive")
             }
             iconsArray[button].setImage(itemIcon, for: UIControlState.normal)
             iconsArray[button].imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
         }
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 213, height: 205)
     }
     
     override func viewDidLoad() {
@@ -138,7 +185,65 @@ class FoodViewController: UIViewController {
         foodButton.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
         gourmetImage.setImage(#imageLiteral(resourceName: "Burger_Icon_active"), for: UIControlState.normal)
         gourmetImage.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
+        servingSoonView.isHidden = true
+        
+        burgerCollectionView.register(UINib(nibName: "BurgerCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "BurgerCollectionViewCell")
+        
+        burgerCollectionView.dataSource = self
+        
+        //requires setting collectionView.delegate to self in order for extension to work
+        self.burgerCollectionView.delegate = self
+        if let layout = burgerCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.scrollDirection = .horizontal
+            layout.minimumLineSpacing = 26 //in between columns
+            layout.minimumInteritemSpacing = 12 //in between rows
+            //sectionInset lets me modify the distance from the outer edge of the collectionview to the cell from all 4 directions
+            layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 26)
+            burgerCollectionView.reloadData()
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        burgerCollectionView.reloadData()
     }
 
     
+}
+
+extension FoodViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return images.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        //let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! drinkCell
+        
+        let cell: BurgerCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "BurgerCollectionViewCell", for: indexPath) as! BurgerCollectionViewCell
+        cell.cellView.layer.cornerRadius = 20
+        
+        cell.burgerImageView.image = images[indexPath.row]
+        
+        cell.addButton.tag = indexPath.row
+        cell.addButton.addTarget(self, action: #selector(addButtonTapped), for: UIControlEvents.touchUpInside)
+        cell.addButton.backgroundColor = .clear
+        cell.addButton.layer.cornerRadius = 20
+        cell.minusButton.tag = indexPath.row
+        cell.minusButton.addTarget(self, action: #selector(minusButtonTapped), for: UIControlEvents.touchUpInside)
+        cell.minusButton.backgroundColor = .clear
+        cell.countLabel.tag = indexPath.row
+        cell.countLabel.layer.cornerRadius = 11
+        //Button is not fully visible because colors?
+        cell.countLabel.clipsToBounds = true
+        cell.countLabel.text = String(numCount[indexPath.row])
+        cell.countLabel.alpha = 0.0
+        if cell.countLabel.text != "0" {
+            cell.countLabel.alpha = 1
+        }
+        else {
+            cell.countLabel.alpha = 0.0
+        }
+        return cell
+    }
 }
