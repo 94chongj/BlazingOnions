@@ -67,6 +67,12 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
     var currentBuildPage: String = ""
     
     //~~~~~~~~~~~~~~~~~~~~
+    @IBAction func buildBurgerButtonOverlayTapped(_ sender: UIButton) {
+        let cell = buildBurgerCollectionView.cellForItem(at: IndexPath(row: sender.tag, section: 0)) as! buildBurgerCollectionViewCell
+        //sets image to next regular, then large, then xl, then xxl
+        //~~~~~ code here
+    }
+    
     @IBAction func addButtonTapped(_ sender: UIButton) {
         let cell = burgerCollectionView.cellForItem(at: IndexPath(row: sender.tag, section: 0)) as! BurgerCollectionViewCell
         UILabel.animate(withDuration: 0.5, delay: 0, options: .transitionCrossDissolve, animations: {cell.countLabel.alpha = 0}, completion: nil)
@@ -437,6 +443,10 @@ extension FoodViewController: UICollectionViewDataSource {
         else {
             //second Burger Collection View showing build a burger pages
             let cell: buildBurgerCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "buildBurgerCollectionViewCell", for: indexPath) as! buildBurgerCollectionViewCell
+            cell.buildBurgerButtonOverlay.tag = indexPath.row
+            cell.buildBurgerButtonOverlay.addTarget(self, action: #selector(buildBurgerButtonOverlayTapped), for: UIControlEvents.touchUpInside)
+            cell.buildBurgerCustomTypeImageView.backgroundColor = .clear
+            cell.buildBurgerCustomTypeImageView.layer.cornerRadius = 20
             //ADD STUFF HERE
             if currentBuildPage == "ChooseBun" {
                 cell.buildBurgerImageView.image = breadImages[indexPath.row]

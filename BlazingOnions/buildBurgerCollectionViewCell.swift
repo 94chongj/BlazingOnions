@@ -16,6 +16,7 @@ class buildBurgerCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var buildBurgerButtonOverlay: UIButton!
     
+    @IBOutlet var buildBurgerCustomTypeImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
