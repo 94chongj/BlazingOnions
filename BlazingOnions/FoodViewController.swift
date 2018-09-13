@@ -10,7 +10,6 @@ import UIKit
 
 class FoodViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
-    var isButtonActive: Bool = false
     
     @IBOutlet weak var drinkButton: UIButton!
     @IBOutlet weak var foodButton: UIButton!
@@ -24,12 +23,21 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBOutlet weak var blazersButton: UIButton!
     @IBOutlet var servingSoonView: UIView!
     
+    var isButtonActive: Bool = false
     var images: [UIImage] = [#imageLiteral(resourceName: "Burger_option_9"),#imageLiteral(resourceName: "Burger_option_1"),#imageLiteral(resourceName: "Burger_option_2"),#imageLiteral(resourceName: "Burger_option_3"),#imageLiteral(resourceName: "Burger_option_4"),#imageLiteral(resourceName: "Burger_option_5"),#imageLiteral(resourceName: "Burger_option_6"),#imageLiteral(resourceName: "Burger_option_7"),#imageLiteral(resourceName: "Burger_option_8"),#imageLiteral(resourceName: "Burger_option_9"),#imageLiteral(resourceName: "Burger_option_1"),#imageLiteral(resourceName: "Burger_option_2"),#imageLiteral(resourceName: "Burger_option_3"),#imageLiteral(resourceName: "Burger_option_4"),#imageLiteral(resourceName: "Burger_option_5"),#imageLiteral(resourceName: "Burger_option_6"),#imageLiteral(resourceName: "Burger_option_7"),#imageLiteral(resourceName: "Burger_option_8")]
     var numCount: [Int] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    
+    var breadImages: [UIImage] = [#imageLiteral(resourceName: "kaiser"),#imageLiteral(resourceName: "Sesame_seed"),#imageLiteral(resourceName: "Chiabata")]
+    var breadText: [String] = ["Kaiser", "Sesame Seed", "Chiabatta"]
     
     @IBOutlet var burgerCollectionView: UICollectionView!
     @IBOutlet var foodTopLabel: UILabel!
     
+    // MARK: Currently working on buildBurgerCollectionView
+    @IBOutlet var buildBurgerCollectionView: UICollectionView!
+    
+    
+    //~~~~~~~~~~~~~~~~~~~~
     @IBAction func addButtonTapped(_ sender: UIButton) {
         let cell = burgerCollectionView.cellForItem(at: IndexPath(row: sender.tag, section: 0)) as! BurgerCollectionViewCell
         UILabel.animate(withDuration: 0.5, delay: 0, options: .transitionCrossDissolve, animations: {cell.countLabel.alpha = 0}, completion: nil)
@@ -60,6 +68,7 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
+    // MARK: Major Buttons
     
     @IBAction func toHomeButton(_ sender: UIButton) {
         let FoodViewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "toHomePage") as UIViewController
@@ -154,6 +163,8 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         foodTopLabel.isHidden = true
     }
     
+    // MARK: collectionView Layout, etc functions, and viewdidLoad/Appear
+    
     func returnInactiveIcons(buttonID: Int) {
         var iconsArray: [UIButton] = [appetizersButton, gourmetImage, sandwhichButton, soupButton, entreeButton, blazersButton]
         iconsArray.remove(at: buttonID)
@@ -189,7 +200,12 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 213, height: 205)
+        if collectionView == burgerCollectionView {
+            return CGSize(width: 213, height: 205)
+        }
+        else {
+            return CGSize(width: 120, height: 149)
+        }
     }
     
     override func viewDidLoad() {
@@ -200,11 +216,10 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         gourmetImage.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
         servingSoonView.isHidden = true
         
+        //registering and setting datasource/delegate for burgerCollectionView/Cell
         burgerCollectionView.register(UINib(nibName: "BurgerCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "BurgerCollectionViewCell")
-        
         burgerCollectionView.dataSource = self
-        
-        //requires setting collectionView.delegate to self in order for extension to work
+            //requires setting collectionView.delegate to self in order for extension to work
         self.burgerCollectionView.delegate = self
         if let layout = burgerCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .horizontal
@@ -212,8 +227,17 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
             layout.minimumInteritemSpacing = 12 //in between rows
             //sectionInset lets me modify the distance from the outer edge of the collectionview to the cell from all 4 directions
             layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 26)
+        if let layout = buildBurgerCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.sectionInset = UIEdgeInsetsMake(10, 5, 0, 10)
+            }
             burgerCollectionView.reloadData()
         }
+        
+        //registering and setting datasource/delegate for buildBurgerCollectionView/Cell
+        buildBurgerCollectionView.register(UINib(nibName: "buildBurgerCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "buildBurgerCollectionViewCell")
+        buildBurgerCollectionView.dataSource = self
+        buildBurgerCollectionView.delegate = self
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -222,41 +246,58 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
 
     
+    // MARK: Extensions(UICollectionViewDataSource)
+    
 }
 
 extension FoodViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images.count
+        //use if statement to check which uiCollectionView is being passed through
+        if collectionView == burgerCollectionView {
+            return images.count
+        }
+        else {
+            return breadImages.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        //let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! drinkCell
-        
-        let cell: BurgerCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "BurgerCollectionViewCell", for: indexPath) as! BurgerCollectionViewCell
-        cell.cellView.layer.cornerRadius = 20
-        
-        cell.burgerImageView.image = images[indexPath.row]
-        
-        cell.addButton.tag = indexPath.row
-        cell.addButton.addTarget(self, action: #selector(addButtonTapped), for: UIControlEvents.touchUpInside)
-        cell.addButton.backgroundColor = .clear
-        cell.addButton.layer.cornerRadius = 20
-        cell.minusButton.tag = indexPath.row
-        cell.minusButton.addTarget(self, action: #selector(minusButtonTapped), for: UIControlEvents.touchUpInside)
-        cell.minusButton.backgroundColor = .clear
-        cell.countLabel.tag = indexPath.row
-        cell.countLabel.layer.cornerRadius = 11
-        //Button is not fully visible because colors?
-        cell.countLabel.clipsToBounds = true
-        cell.countLabel.text = String(numCount[indexPath.row])
-        cell.countLabel.alpha = 0.0
-        if cell.countLabel.text != "0" {
-            cell.countLabel.alpha = 1
+        if collectionView == burgerCollectionView {
+            //first Burger Collection View showing all burgers
+            let cell: BurgerCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "BurgerCollectionViewCell", for: indexPath) as! BurgerCollectionViewCell
+            cell.cellView.layer.cornerRadius = 20
+            cell.burgerImageView.image = images[indexPath.row]
+            cell.addButton.tag = indexPath.row
+            cell.addButton.addTarget(self, action: #selector(addButtonTapped), for: UIControlEvents.touchUpInside)
+            cell.addButton.backgroundColor = .clear
+            cell.addButton.layer.cornerRadius = 20
+            cell.minusButton.tag = indexPath.row
+            cell.minusButton.addTarget(self, action: #selector(minusButtonTapped), for: UIControlEvents.touchUpInside)
+            cell.minusButton.backgroundColor = .clear
+            cell.countLabel.tag = indexPath.row
+            cell.countLabel.layer.cornerRadius = 11
+            //Button is not fully visible because colors?
+            cell.countLabel.clipsToBounds = true
+            cell.countLabel.text = String(numCount[indexPath.row])
+            cell.countLabel.alpha = 0.0
+            if cell.countLabel.text != "0" {
+                cell.countLabel.alpha = 1
+            }
+            else {
+                cell.countLabel.alpha = 0.0
+            }
+            return cell
         }
         else {
-            cell.countLabel.alpha = 0.0
+            //second Burger Collection View showing build a burger pages
+            let cell: buildBurgerCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "buildBurgerCollectionViewCell", for: indexPath) as! buildBurgerCollectionViewCell
+            //ADD STUFF HERE
+            cell.buildBurgerImageView.image = breadImages[indexPath.row]
+            //cell.buildBurgerImageView.layer.cornerRadius = 20
+            cell.buildBurgerLabel.text = String(breadText[indexPath.row])
+            return cell
         }
-        return cell
     }
 }
+

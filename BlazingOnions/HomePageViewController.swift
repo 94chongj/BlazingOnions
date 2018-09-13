@@ -113,7 +113,6 @@ class HomePageViewController: UIViewController {
     var specials_1: UIImage!
     var specials_2: UIImage!
     var specialImageArray: [UIImage]!
-    
     var instaImage_1: UIImage!
     var instaImage_2: UIImage!
     var instaImage_3: UIImage!

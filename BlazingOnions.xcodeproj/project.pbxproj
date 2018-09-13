@@ -19,6 +19,8 @@
 		ABAA0239214866CB00C0A76B /* DrinksCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABAA0237214866CB00C0A76B /* DrinksCollectionViewCell.xib */; };
 		ABAA023C214973E800C0A76B /* BurgerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAA023A214973E800C0A76B /* BurgerCollectionViewCell.swift */; };
 		ABAA023D214973E800C0A76B /* BurgerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABAA023B214973E800C0A76B /* BurgerCollectionViewCell.xib */; };
+		ABAA02402149DAE900C0A76B /* buildBurgerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAA023E2149DAE900C0A76B /* buildBurgerCollectionViewCell.swift */; };
+		ABAA02412149DAE900C0A76B /* buildBurgerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABAA023F2149DAE900C0A76B /* buildBurgerCollectionViewCell.xib */; };
 		ABADF9B221430988002B2E0C /* totalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABADF9B121430988002B2E0C /* totalViewController.swift */; };
 		ABADF9B421433445002B2E0C /* FoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABADF9B321433445002B2E0C /* FoodViewController.swift */; };
 		ABADF9B6214343EE002B2E0C /* DrinksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABADF9B5214343EE002B2E0C /* DrinksViewController.swift */; };
@@ -62,6 +64,8 @@
 		ABAA0237214866CB00C0A76B /* DrinksCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrinksCollectionViewCell.xib; sourceTree = "<group>"; };
 		ABAA023A214973E800C0A76B /* BurgerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BurgerCollectionViewCell.swift; sourceTree = "<group>"; };
 		ABAA023B214973E800C0A76B /* BurgerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BurgerCollectionViewCell.xib; sourceTree = "<group>"; };
+		ABAA023E2149DAE900C0A76B /* buildBurgerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = buildBurgerCollectionViewCell.swift; sourceTree = "<group>"; };
+		ABAA023F2149DAE900C0A76B /* buildBurgerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = buildBurgerCollectionViewCell.xib; sourceTree = "<group>"; };
 		ABADF9B121430988002B2E0C /* totalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = totalViewController.swift; sourceTree = "<group>"; };
 		ABADF9B321433445002B2E0C /* FoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodViewController.swift; sourceTree = "<group>"; };
 		ABADF9B5214343EE002B2E0C /* DrinksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinksViewController.swift; sourceTree = "<group>"; };
@@ -133,6 +137,8 @@
 				ABAA0237214866CB00C0A76B /* DrinksCollectionViewCell.xib */,
 				ABAA023A214973E800C0A76B /* BurgerCollectionViewCell.swift */,
 				ABAA023B214973E800C0A76B /* BurgerCollectionViewCell.xib */,
+				ABAA023E2149DAE900C0A76B /* buildBurgerCollectionViewCell.swift */,
+				ABAA023F2149DAE900C0A76B /* buildBurgerCollectionViewCell.xib */,
 			);
 			path = BlazingOnions;
 			sourceTree = "<group>";
@@ -263,6 +269,7 @@
 				AB6AF13021404A80006444FA /* LaunchScreen.storyboard in Resources */,
 				ABAA0239214866CB00C0A76B /* DrinksCollectionViewCell.xib in Resources */,
 				AB6AF12D21404A80006444FA /* Assets.xcassets in Resources */,
+				ABAA02412149DAE900C0A76B /* buildBurgerCollectionViewCell.xib in Resources */,
 				AB6AF12B21404A7F006444FA /* Main.storyboard in Resources */,
 				ABAA023D214973E800C0A76B /* BurgerCollectionViewCell.xib in Resources */,
 			);
@@ -297,6 +304,7 @@
 				ABADF9B821434412002B2E0C /* DessertViewController.swift in Sources */,
 				ABF260672141A31C0003EF1F /* HomePageViewController.swift in Sources */,
 				ABAA023C214973E800C0A76B /* BurgerCollectionViewCell.swift in Sources */,
+				ABAA02402149DAE900C0A76B /* buildBurgerCollectionViewCell.swift in Sources */,
 				ABADF9B221430988002B2E0C /* totalViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
