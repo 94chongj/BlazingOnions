@@ -27,10 +27,10 @@
                         </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RFM-RW-lCu">
-                        <rect key="frame" x="45" y="45" width="30" height="30"/>
+                        <rect key="frame" x="42.5" y="42.5" width="35" height="35"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="30" id="7AV-R7-yb3"/>
-                            <constraint firstAttribute="height" constant="30" id="ru6-38-CDX"/>
+                            <constraint firstAttribute="height" constant="35" id="F8I-x3-dYQ"/>
+                            <constraint firstAttribute="width" constant="35" id="Y4W-pi-tcT"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="testlabel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EY1-Ns-MZO">
@@ -47,19 +47,19 @@
             <constraints>
                 <constraint firstItem="TmV-UO-LfX" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="7Od-tY-bas"/>
                 <constraint firstItem="EY1-Ns-MZO" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="CB6-Kn-0yF"/>
+                <constraint firstItem="RFM-RW-lCu" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="42.5" id="COK-LR-5aM"/>
+                <constraint firstItem="RFM-RW-lCu" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="42.5" id="Egm-W3-FbI"/>
                 <constraint firstItem="9sS-fx-BrO" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="FSy-7W-knh"/>
-                <constraint firstItem="RFM-RW-lCu" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="45" id="NSn-tV-rUX"/>
                 <constraint firstAttribute="bottom" secondItem="EY1-Ns-MZO" secondAttribute="bottom" id="NWs-9G-0Ss"/>
-                <constraint firstAttribute="trailing" secondItem="RFM-RW-lCu" secondAttribute="trailing" constant="45" id="OGt-up-vIk"/>
+                <constraint firstAttribute="trailing" secondItem="RFM-RW-lCu" secondAttribute="trailing" constant="42.5" id="PcH-cO-D43"/>
                 <constraint firstItem="TmV-UO-LfX" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="RNi-Jx-zOX"/>
                 <constraint firstItem="EY1-Ns-MZO" firstAttribute="top" secondItem="TmV-UO-LfX" secondAttribute="bottom" id="WMQ-pG-0ka"/>
                 <constraint firstAttribute="trailing" secondItem="EY1-Ns-MZO" secondAttribute="trailing" id="YBs-Zd-H6T"/>
                 <constraint firstAttribute="trailing" secondItem="9sS-fx-BrO" secondAttribute="trailing" id="gBV-ai-wZa"/>
                 <constraint firstItem="9sS-fx-BrO" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="jHY-kg-i4q"/>
                 <constraint firstAttribute="trailing" secondItem="TmV-UO-LfX" secondAttribute="trailing" id="o8z-Hh-Ek9"/>
-                <constraint firstItem="RFM-RW-lCu" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="45" id="pek-Cb-mZr"/>
+                <constraint firstItem="EY1-Ns-MZO" firstAttribute="top" secondItem="RFM-RW-lCu" secondAttribute="bottom" constant="42.5" id="sFu-QI-u4M"/>
                 <constraint firstAttribute="bottom" secondItem="9sS-fx-BrO" secondAttribute="bottom" id="uZV-Rh-w0S"/>
-                <constraint firstItem="EY1-Ns-MZO" firstAttribute="top" secondItem="RFM-RW-lCu" secondAttribute="bottom" constant="45" id="wDF-xh-7v2"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="120" height="149"/>

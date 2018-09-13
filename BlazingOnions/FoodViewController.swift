@@ -74,20 +74,23 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     var currentBuildPage: String = ""
     var bunCount: [Int] = [0,0,0]
-    
+    var meatCount: [Int] = [0,0,0,0,0]
+    var cheeseCount: [Int] = [0,0]
+    var toppingCount: [Int] = [0,0,0]
+    var condimentCount: [Int] = [0,0]
+    var sidesCount: [Int] = [0,0]
     
     //~~~~~~~~~~~~~~~~~~~~
     @IBAction func buildBurgerButtonOverlayTapped(_ sender: UIButton) {
         let cell = buildBurgerCollectionView.cellForItem(at: IndexPath(row: sender.tag, section: 0)) as! buildBurgerCollectionViewCell
         //sets image to next regular, then large, then xl, then xxl
         //~~~~~ code here
-        print("Hello")
-        for i in 0...2 {
-            let cell = buildBurgerCollectionView.cellForItem(at: IndexPath(row: i, section: 0)) as! buildBurgerCollectionViewCell
-            cell.buildBurgerCustomTypeImageView.image = nil
-        }
-        bunCount = [0,0,0]
         if currentBuildPage == "ChooseBun" {
+            for i in 0...2 {
+                let cell = buildBurgerCollectionView.cellForItem(at: IndexPath(row: i, section: 0)) as! buildBurgerCollectionViewCell
+                cell.buildBurgerCustomTypeImageView.image = nil
+            }
+            bunCount = [0,0,0]
             if sender.tag == 0 {
                 if bunCount[sender.tag] == 0 {
                     if cell.buildBurgerCustomTypeImageView.image == nil {
@@ -122,20 +125,85 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 }
             }
         }
-        /*else if currentBuildPage == "Meat" {
+        else if currentBuildPage == "Meat" {
+            if meatCount[sender.tag] == 4 {
+                meatCount[sender.tag] = 0
+                cell.buildBurgerCustomTypeImageView.image = nil
+            }
+            else if meatCount[sender.tag] == 0 {
+                meatCount[sender.tag] = meatCount[sender.tag] + 1
+                cell.buildBurgerCustomTypeImageView.image = #imageLiteral(resourceName: "Reg")
+            }
+            else if meatCount[sender.tag] == 1 {
+                meatCount[sender.tag] = meatCount[sender.tag] + 1
+                cell.buildBurgerCustomTypeImageView.image = #imageLiteral(resourceName: "XL")
+            }
+            else if meatCount[sender.tag] == 2 {
+                meatCount[sender.tag] = meatCount[sender.tag] + 1
+                cell.buildBurgerCustomTypeImageView.image = #imageLiteral(resourceName: "XXL")
+            }
+            else if meatCount[sender.tag] == 3 {
+                meatCount[sender.tag] = meatCount[sender.tag] + 1
+                cell.buildBurgerCustomTypeImageView.image = #imageLiteral(resourceName: "XXXL")
+            }
+        }
             
-        }*/
-        /*else if currentBuildPage == "Cheese" {
-            
+        else if currentBuildPage == "Cheese" {
+            if cheeseCount[sender.tag] == 2 {
+                cheeseCount[sender.tag] = 0
+                cell.buildBurgerCustomTypeImageView.image = nil
+            }
+            else if cheeseCount[sender.tag] == 0 {
+                cell.buildBurgerCustomTypeImageView.image = #imageLiteral(resourceName: "Reg")
+                cheeseCount[sender.tag] = cheeseCount[sender.tag] + 1
+            }
+            else if cheeseCount[sender.tag] == 1 {
+                cheeseCount[sender.tag] = cheeseCount[sender.tag] + 1
+                cell.buildBurgerCustomTypeImageView.image = #imageLiteral(resourceName: "extra")
+            }
         }
         else if currentBuildPage == "Topping" {
-            
+            if toppingCount[sender.tag] == 2 {
+                toppingCount[sender.tag] = 0
+                cell.buildBurgerCustomTypeImageView.image = nil
+            }
+            else if toppingCount[sender.tag] == 0 {
+                cell.buildBurgerCustomTypeImageView.image = #imageLiteral(resourceName: "Reg")
+                toppingCount[sender.tag] = toppingCount[sender.tag] + 1
+            }
+            else if toppingCount[sender.tag] == 1 {
+                toppingCount[sender.tag] = toppingCount[sender.tag] + 1
+                cell.buildBurgerCustomTypeImageView.image = #imageLiteral(resourceName: "extra")
+            }
         }
         else if currentBuildPage == "Condiment" {
-            
+            if condimentCount[sender.tag] == 2 {
+                condimentCount[sender.tag] = 0
+                cell.buildBurgerCustomTypeImageView.image = nil
+            }
+            else if condimentCount[sender.tag] == 0 {
+                cell.buildBurgerCustomTypeImageView.image = #imageLiteral(resourceName: "Reg")
+                condimentCount[sender.tag] = condimentCount[sender.tag] + 1
+            }
+            else if condimentCount[sender.tag] == 1 {
+                condimentCount[sender.tag] = condimentCount[sender.tag] + 1
+                cell.buildBurgerCustomTypeImageView.image = #imageLiteral(resourceName: "extra")
+            }
         }
-        else if currentBuildPage == "Sides" {*/
-        }
+        else if currentBuildPage == "Sides" {
+            if sidesCount[sender.tag] == 2 {
+                sidesCount[sender.tag] = 0
+                cell.buildBurgerCustomTypeImageView.image = nil
+            }
+            else if sidesCount[sender.tag] == 0 {
+                cell.buildBurgerCustomTypeImageView.image = #imageLiteral(resourceName: "Reg")
+                sidesCount[sender.tag] = sidesCount[sender.tag] + 1
+            }
+            else if sidesCount[sender.tag] == 1 {
+                sidesCount[sender.tag] = sidesCount[sender.tag] + 1
+                cell.buildBurgerCustomTypeImageView.image = #imageLiteral(resourceName: "extra")
+            }
+         }
     }
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
@@ -526,22 +594,73 @@ extension FoodViewController: UICollectionViewDataSource {
             else if currentBuildPage == "Meat" {
                 cell.buildBurgerImageView.image = meatImages[indexPath.row]
                 cell.buildBurgerLabel.text = String(meatText[indexPath.row])
+                if meatCount[indexPath.row] == 0 {
+                    cell.buildBurgerCustomTypeImageView.image = nil
+                }
+                else if meatCount[indexPath.row] == 1 {
+                    cell.buildBurgerCustomTypeImageView.image = #imageLiteral(resourceName: "Reg")
+                }
+                else if meatCount[indexPath.row] == 2 {
+                    cell.buildBurgerCustomTypeImageView.image = #imageLiteral(resourceName: "XL")
+                }
+                else if meatCount[indexPath.row] == 3 {
+                    cell.buildBurgerCustomTypeImageView.image = #imageLiteral(resourceName: "XXL")
+                }
+                else if meatCount[indexPath.row] == 4 {
+                    cell.buildBurgerCustomTypeImageView.image = #imageLiteral(resourceName: "XXXL")
+                }
             }
             else if currentBuildPage == "Cheese" {
                 cell.buildBurgerImageView.image = cheeseImages[indexPath.row]
                 cell.buildBurgerLabel.text = String(cheeseText[indexPath.row])
+                if cheeseCount[indexPath.row] == 0 {
+                    cell.buildBurgerCustomTypeImageView.image = nil
+                }
+                else if cheeseCount[indexPath.row] == 1 {
+                    cell.buildBurgerCustomTypeImageView.image = #imageLiteral(resourceName: "Reg")
+                }
+                else if cheeseCount[indexPath.row] == 2 {
+                    cell.buildBurgerCustomTypeImageView.image = #imageLiteral(resourceName: "extra")
+                }
             }
             else if currentBuildPage == "Topping" {
                 cell.buildBurgerImageView.image = toppingImages[indexPath.row]
                 cell.buildBurgerLabel.text = String(toppingText[indexPath.row])
+                if toppingCount[indexPath.row] == 0 {
+                    cell.buildBurgerCustomTypeImageView.image = nil
+                }
+                else if toppingCount[indexPath.row] == 1 {
+                    cell.buildBurgerCustomTypeImageView.image = #imageLiteral(resourceName: "Reg")
+                }
+                else if toppingCount[indexPath.row] == 2 {
+                    cell.buildBurgerCustomTypeImageView.image = #imageLiteral(resourceName: "extra")
+                }
             }
             else if currentBuildPage == "Condiment" {
                 cell.buildBurgerImageView.image = condimentImages[indexPath.row]
                 cell.buildBurgerLabel.text = String(condimentText[indexPath.row])
+                if condimentCount[indexPath.row] == 0 {
+                    cell.buildBurgerCustomTypeImageView.image = nil
+                }
+                else if condimentCount[indexPath.row] == 1 {
+                    cell.buildBurgerCustomTypeImageView.image = #imageLiteral(resourceName: "Reg")
+                }
+                else if condimentCount[indexPath.row] == 2 {
+                    cell.buildBurgerCustomTypeImageView.image = #imageLiteral(resourceName: "extra")
+                }
             }
             else if currentBuildPage == "Sides" {
                 cell.buildBurgerImageView.image = sidesImages[indexPath.row]
                 cell.buildBurgerLabel.text = String(sidesText[indexPath.row])
+                if sidesCount[indexPath.row] == 0 {
+                    cell.buildBurgerCustomTypeImageView.image = nil
+                }
+                else if sidesCount[indexPath.row] == 1 {
+                    cell.buildBurgerCustomTypeImageView.image = #imageLiteral(resourceName: "Reg")
+                }
+                else if sidesCount[indexPath.row] == 2 {
+                    cell.buildBurgerCustomTypeImageView.image = #imageLiteral(resourceName: "extra")
+                }
             }
             return cell
         }
