@@ -974,8 +974,12 @@
                                         </constraints>
                                     </imageView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="L27-hW-ROj" userLabel="buildBurgerCollectionView">
-                                        <rect key="frame" x="0.0" y="67" width="695" height="495"/>
+                                        <rect key="frame" x="0.0" y="118" width="695" height="425"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="695" id="GeN-gk-UMg"/>
+                                            <constraint firstAttribute="height" constant="425" id="TNN-Rz-ae3"/>
+                                        </constraints>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Hjl-zU-HN3">
                                             <size key="itemSize" width="50" height="50"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -994,7 +998,12 @@
                                         </cells>
                                     </collectionView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  *Tap to select your bun. Tap again to unselect." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0QH-ub-JT5" userLabel="bottomLabel">
-                                        <rect key="frame" x="0.0" y="562" width="695" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="556" width="695" height="27"/>
+                                        <color key="backgroundColor" red="0.85882352939999995" green="0.67450980390000004" blue="0.22352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="27" id="Ces-jW-yof"/>
+                                            <constraint firstAttribute="width" constant="695" id="eyF-av-z6W"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -1010,14 +1019,14 @@
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="30" maxY="0.0"/>
                                                         <state key="normal" title="CANCEL" image="x_cancel">
-                                                            <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="titleColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OlB-K2-jOB">
                                                         <rect key="frame" x="158" y="17" width="30" height="33"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
                                                         <state key="normal" title="NO">
-                                                            <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="titleColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                     </button>
                                                 </subviews>
@@ -1038,14 +1047,14 @@
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
                                                         <inset key="imageEdgeInsets" minX="25" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         <state key="normal" title="NEXT" image="next_icon">
-                                                            <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="titleColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pRr-OQ-0nC">
                                                         <rect key="frame" x="158" y="17" width="33" height="33"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
                                                         <state key="normal" title="YES">
-                                                            <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="titleColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                     </button>
                                                 </subviews>
@@ -1064,32 +1073,47 @@
                                             <constraint firstAttribute="height" constant="67" id="u8X-gi-S97"/>
                                         </constraints>
                                     </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose your bun:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zdU-nE-Hv8">
+                                        <rect key="frame" x="18" y="78" width="677" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="4V6-RH-j1L"/>
+                                            <constraint firstAttribute="width" constant="677" id="uRi-ye-oN2"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="0QH-ub-JT5" firstAttribute="leading" secondItem="Xue-8H-oDk" secondAttribute="leading" id="4BE-KG-yYn"/>
                                     <constraint firstItem="0QH-ub-JT5" firstAttribute="leading" secondItem="Xue-8H-oDk" secondAttribute="leading" id="4CY-nT-GZP"/>
-                                    <constraint firstItem="L27-hW-ROj" firstAttribute="leading" secondItem="Xue-8H-oDk" secondAttribute="leading" id="4U0-Y0-wfM"/>
                                     <constraint firstAttribute="trailing" secondItem="Ab9-GW-wgL" secondAttribute="trailing" id="7Mh-kF-RQ3"/>
                                     <constraint firstAttribute="bottom" secondItem="nnj-vd-TCV" secondAttribute="bottom" id="8c7-hK-Z84"/>
+                                    <constraint firstItem="0QH-ub-JT5" firstAttribute="top" secondItem="L27-hW-ROj" secondAttribute="bottom" constant="13.5" id="AD6-IK-Qdd"/>
+                                    <constraint firstItem="zdU-nE-Hv8" firstAttribute="top" secondItem="Ab9-GW-wgL" secondAttribute="bottom" constant="8" id="AGk-sM-J8i"/>
+                                    <constraint firstItem="L27-hW-ROj" firstAttribute="leading" secondItem="Xue-8H-oDk" secondAttribute="leading" id="Fgm-4N-xzs"/>
                                     <constraint firstItem="NVL-qa-Sky" firstAttribute="top" secondItem="Xue-8H-oDk" secondAttribute="top" id="HIF-l9-Z4b"/>
                                     <constraint firstAttribute="trailing" secondItem="LWX-vS-DOC" secondAttribute="trailing" id="Mql-xI-qJg"/>
+                                    <constraint firstAttribute="trailing" secondItem="zdU-nE-Hv8" secondAttribute="trailing" id="NmU-P6-dIh"/>
                                     <constraint firstAttribute="trailing" secondItem="orH-yB-weV" secondAttribute="trailing" constant="300" id="Rbk-p3-IxP"/>
                                     <constraint firstItem="NVL-qa-Sky" firstAttribute="leading" secondItem="Xue-8H-oDk" secondAttribute="leading" id="S8l-0z-DaO"/>
+                                    <constraint firstItem="zdU-nE-Hv8" firstAttribute="leading" secondItem="Xue-8H-oDk" secondAttribute="leading" constant="18" id="SSB-90-gIX"/>
                                     <constraint firstItem="LWX-vS-DOC" firstAttribute="top" secondItem="Xue-8H-oDk" secondAttribute="top" id="TgE-c5-BS4"/>
                                     <constraint firstItem="orH-yB-weV" firstAttribute="top" secondItem="Ab9-GW-wgL" secondAttribute="bottom" constant="149" id="XgX-IV-Wyi"/>
                                     <constraint firstAttribute="trailing" secondItem="NVL-qa-Sky" secondAttribute="trailing" id="Zjg-4Y-gd0"/>
-                                    <constraint firstAttribute="trailing" secondItem="L27-hW-ROj" secondAttribute="trailing" id="bDl-Hv-Klf"/>
-                                    <constraint firstItem="L27-hW-ROj" firstAttribute="top" secondItem="LWX-vS-DOC" secondAttribute="bottom" id="cdL-gd-cA9"/>
                                     <constraint firstItem="Ab9-GW-wgL" firstAttribute="top" secondItem="LWX-vS-DOC" secondAttribute="bottom" id="ci2-R9-7k5"/>
                                     <constraint firstAttribute="bottom" secondItem="NVL-qa-Sky" secondAttribute="bottom" id="ctt-yT-Lsw"/>
+                                    <constraint firstAttribute="trailing" secondItem="0QH-ub-JT5" secondAttribute="trailing" id="dTJ-g2-UkP"/>
                                     <constraint firstItem="LWX-vS-DOC" firstAttribute="leading" secondItem="Xue-8H-oDk" secondAttribute="leading" id="ddW-Ta-qyT"/>
-                                    <constraint firstItem="nnj-vd-TCV" firstAttribute="top" secondItem="0QH-ub-JT5" secondAttribute="bottom" id="eia-kQ-jiJ"/>
                                     <constraint firstAttribute="trailing" secondItem="nnj-vd-TCV" secondAttribute="trailing" id="gYh-bh-62c"/>
+                                    <constraint firstItem="nnj-vd-TCV" firstAttribute="top" secondItem="0QH-ub-JT5" secondAttribute="bottom" id="mF9-40-ahR"/>
+                                    <constraint firstItem="0QH-ub-JT5" firstAttribute="top" secondItem="L27-hW-ROj" secondAttribute="bottom" constant="13.5" id="mXK-Cw-Ber"/>
                                     <constraint firstItem="Ab9-GW-wgL" firstAttribute="leading" secondItem="Xue-8H-oDk" secondAttribute="leading" id="mhR-1G-w1L"/>
-                                    <constraint firstItem="0QH-ub-JT5" firstAttribute="top" secondItem="L27-hW-ROj" secondAttribute="bottom" id="muA-b2-jKt"/>
-                                    <constraint firstItem="0QH-ub-JT5" firstAttribute="top" secondItem="orH-yB-weV" secondAttribute="bottom" constant="130.5" id="ovO-Ym-xD7"/>
                                     <constraint firstItem="orH-yB-weV" firstAttribute="leading" secondItem="Xue-8H-oDk" secondAttribute="leading" constant="300" id="pW7-gJ-bNj"/>
                                     <constraint firstAttribute="trailing" secondItem="0QH-ub-JT5" secondAttribute="trailing" id="qMY-p4-BbO"/>
+                                    <constraint firstAttribute="trailing" secondItem="L27-hW-ROj" secondAttribute="trailing" id="rLW-9k-12l"/>
+                                    <constraint firstItem="L27-hW-ROj" firstAttribute="top" secondItem="zdU-nE-Hv8" secondAttribute="bottom" constant="8" id="wgh-ex-yNL"/>
                                     <constraint firstItem="nnj-vd-TCV" firstAttribute="leading" secondItem="Xue-8H-oDk" secondAttribute="leading" id="xfm-Ql-Evr"/>
                                 </constraints>
                             </view>

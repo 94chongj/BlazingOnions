@@ -228,7 +228,7 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
             //sectionInset lets me modify the distance from the outer edge of the collectionview to the cell from all 4 directions
             layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 26)
         if let layout = buildBurgerCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            layout.sectionInset = UIEdgeInsetsMake(10, 5, 0, 10)
+            layout.sectionInset = UIEdgeInsetsMake(10, 18, 0, 18)
             }
             burgerCollectionView.reloadData()
         }
