@@ -22,13 +22,41 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBOutlet weak var entreeButton: UIButton!
     @IBOutlet weak var blazersButton: UIButton!
     @IBOutlet var servingSoonView: UIView!
+    @IBOutlet var chooseBunLabel: UILabel!
+    @IBOutlet var customizeView: UIView!
+    @IBOutlet var bottomDescriptionLabel: UILabel!
+    
+    @IBOutlet var questionImage: UIImageView!
+    @IBOutlet var cancelButton: UIButton!
+    @IBOutlet var noButton: UIButton!
+    @IBOutlet var nextButton: UIButton!
+    @IBOutlet var yesButton: UIButton!
+    @IBOutlet var leftStackView: UIView!
+    @IBOutlet var rightStackView: UIView!
     
     var isButtonActive: Bool = false
     var images: [UIImage] = [#imageLiteral(resourceName: "Burger_option_9"),#imageLiteral(resourceName: "Burger_option_1"),#imageLiteral(resourceName: "Burger_option_2"),#imageLiteral(resourceName: "Burger_option_3"),#imageLiteral(resourceName: "Burger_option_4"),#imageLiteral(resourceName: "Burger_option_5"),#imageLiteral(resourceName: "Burger_option_6"),#imageLiteral(resourceName: "Burger_option_7"),#imageLiteral(resourceName: "Burger_option_8"),#imageLiteral(resourceName: "Burger_option_9"),#imageLiteral(resourceName: "Burger_option_1"),#imageLiteral(resourceName: "Burger_option_2"),#imageLiteral(resourceName: "Burger_option_3"),#imageLiteral(resourceName: "Burger_option_4"),#imageLiteral(resourceName: "Burger_option_5"),#imageLiteral(resourceName: "Burger_option_6"),#imageLiteral(resourceName: "Burger_option_7"),#imageLiteral(resourceName: "Burger_option_8")]
     var numCount: [Int] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     
-    var breadImages: [UIImage] = [#imageLiteral(resourceName: "kaiser"),#imageLiteral(resourceName: "Sesame_seed"),#imageLiteral(resourceName: "Chiabata")]
-    var breadText: [String] = ["Kaiser", "Sesame Seed", "Chiabatta"]
+    let breadImages: [UIImage] = [#imageLiteral(resourceName: "kaiser"),#imageLiteral(resourceName: "Sesame_seed"),#imageLiteral(resourceName: "Chiabata")]
+    let breadText: [String] = ["Kaiser", "Sesame Seed", "Chiabatta"]
+    
+    let meatImages: [UIImage] = [#imageLiteral(resourceName: "beef"),#imageLiteral(resourceName: "turkey"),#imageLiteral(resourceName: "chicken"),#imageLiteral(resourceName: "buffalo"),#imageLiteral(resourceName: "lamb")]
+    let meatText: [String] = ["100% Beef", "Turkey (+ $2.49)", "Chicken (+ $0.49)", "Buffalo", "Lamb"]
+    
+    let cheeseImages: [UIImage] = [#imageLiteral(resourceName: "American"),#imageLiteral(resourceName: "Pepperjack")]
+    let cheeseText: [String] = ["Pepperjack", "American"]
+    
+    let toppingImages: [UIImage] = [#imageLiteral(resourceName: "Onions"),#imageLiteral(resourceName: "Bacon"),#imageLiteral(resourceName: "tomatoes")]
+    let toppingText: [String] = ["Onions", "Bacon", "Tomatoes"]
+    
+    let condimentImages: [UIImage] = [#imageLiteral(resourceName: "Garlic_Mayo"),#imageLiteral(resourceName: "chipotle")]
+    let condimentText: [String] = ["Garlic Mayo", "Chipotle"]
+    
+    let sidesImages: [UIImage] = [#imageLiteral(resourceName: "Fries"),#imageLiteral(resourceName: "Rings")]
+    let sidesText: [String] = ["Fries", "Onion Rings"]
+    
+    let darkGreyColor: UIColor = UIColor(red: 77.0/255.0, green: 77.0/255.0, blue: 77.0/255.0, alpha: 1.0)
     
     @IBOutlet var burgerCollectionView: UICollectionView!
     @IBOutlet var foodTopLabel: UILabel!
@@ -36,6 +64,7 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // MARK: Currently working on buildBurgerCollectionView
     @IBOutlet var buildBurgerCollectionView: UICollectionView!
     
+    var currentBuildPage: String = ""
     
     //~~~~~~~~~~~~~~~~~~~~
     @IBAction func addButtonTapped(_ sender: UIButton) {
@@ -44,7 +73,20 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         numCount[sender.tag] = numCount[sender.tag] + 1
         cell.countLabel.text = String(numCount[sender.tag])
         UILabel.animate(withDuration: 0.5, delay: 0, options: .transitionCrossDissolve, animations: {cell.countLabel.alpha = 1}, completion: nil)
+        //views that are not hidden anymore
+        customizeView.isHidden = false
         
+        //views that need to be hidden
+        burgerCollectionView.isHidden = true
+        cancelButton.isHidden = true
+        nextButton.isHidden = true
+        yesButton.isHidden = false
+        noButton.isHidden = false
+        bottomDescriptionLabel.isHidden = true
+        chooseBunLabel.isHidden = true
+        questionImage.isHidden = false
+        currentBuildPage = "ChooseBun"
+        buildBurgerCollectionView.isHidden = true
     }
     
     @IBAction func minusButtonTapped(_ sender: UIButton) {
@@ -67,6 +109,84 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
         }
     }
+    
+    @IBAction func cancelButtonPressed(_ sender: UIButton) {
+        if currentBuildPage == "Sides" {
+            currentBuildPage = "Condiment"
+        }
+        else if currentBuildPage == "Condiment" {
+            currentBuildPage = "Topping"
+        }
+        else if currentBuildPage == "Topping" {
+            currentBuildPage = "Cheese"
+        }
+        else if currentBuildPage == "Cheese" {
+            currentBuildPage = "Meat"
+        }
+        else if currentBuildPage == "Meat" {
+            currentBuildPage = "ChooseBun"
+            nextButton.setTitle("ORDER", for: UIControlState.normal)
+        }
+        else if currentBuildPage == "ChooseBun" {
+            currentBuildPage = ""
+            buildBurgerCollectionView.isHidden = true
+            questionImage.isHidden = false
+            yesButton.isHidden = false
+            noButton.isHidden = false
+            chooseBunLabel.isHidden = true
+            nextButton.isHidden = true
+            cancelButton.isHidden = true
+            bottomDescriptionLabel.isHidden = true
+        }
+        buildBurgerCollectionView.reloadData()
+        print(currentBuildPage)
+    }
+    
+    @IBAction func noButtonPressed(_ sender: UIButton) {
+        customizeView.isHidden = true
+        burgerCollectionView.isHidden = false
+    }
+    
+    @IBAction func nextButtonPressed(_ sender: UIButton) {
+        if currentBuildPage == "ChooseBun" {
+            currentBuildPage = "Meat"
+        }
+        else if currentBuildPage == "Meat" {
+            currentBuildPage = "Cheese"
+        }
+        else if currentBuildPage == "Cheese" {
+            currentBuildPage = "Topping"
+        }
+        else if currentBuildPage == "Topping" {
+            currentBuildPage = "Condiment"
+        }
+        else if currentBuildPage == "Condiment" {
+            currentBuildPage = "Sides"
+            nextButton.setTitle("ORDER", for: UIControlState.normal)
+        }
+        else if currentBuildPage == "Sides" {
+            currentBuildPage = ""
+            customizeView.isHidden = true
+            burgerCollectionView.isHidden = false
+        }
+        buildBurgerCollectionView.reloadData()
+        print(currentBuildPage)
+    }
+    
+    @IBAction func yesButtonPressed(_ sender: UIButton) {
+        questionImage.isHidden = true
+        noButton.isHidden = true
+        yesButton.isHidden = true
+        cancelButton.isHidden = false
+        nextButton.isHidden = false
+        bottomDescriptionLabel.isHidden = false
+        chooseBunLabel.isHidden = false
+        buildBurgerCollectionView.isHidden = false
+        //might have to do something about currentBuildPage
+        currentBuildPage = "ChooseBun"
+        buildBurgerCollectionView.reloadData()
+    }
+    
     
     // MARK: Major Buttons
     
@@ -232,11 +352,19 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
             burgerCollectionView.reloadData()
         }
+        bottomDescriptionLabel.layer.borderWidth = 3
+        bottomDescriptionLabel.layer.borderColor = darkGreyColor.cgColor
+        leftStackView.layer.borderWidth = 3
+        leftStackView.layer.borderColor = darkGreyColor.cgColor
+        rightStackView.layer.borderWidth = 3
+        rightStackView.layer.borderColor = darkGreyColor.cgColor
         
         //registering and setting datasource/delegate for buildBurgerCollectionView/Cell
         buildBurgerCollectionView.register(UINib(nibName: "buildBurgerCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "buildBurgerCollectionViewCell")
         buildBurgerCollectionView.dataSource = self
         buildBurgerCollectionView.delegate = self
+        buildBurgerCollectionView.isHidden = true
+        customizeView.isHidden = true
         
     }
     
@@ -258,7 +386,24 @@ extension FoodViewController: UICollectionViewDataSource {
             return images.count
         }
         else {
-            return breadImages.count
+            if currentBuildPage == "ChooseBun" {
+                return breadImages.count
+            }
+            else if currentBuildPage == "Meat" {
+                return meatImages.count
+            }
+            else if currentBuildPage == "Cheese" {
+                return cheeseImages.count
+            }
+            else if currentBuildPage == "Topping" {
+                return toppingImages.count
+            }
+            else if currentBuildPage == "Condiment" {
+                return condimentImages.count
+            }
+            else {
+                return sidesImages.count
+            }
         }
     }
     
@@ -293,11 +438,31 @@ extension FoodViewController: UICollectionViewDataSource {
             //second Burger Collection View showing build a burger pages
             let cell: buildBurgerCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "buildBurgerCollectionViewCell", for: indexPath) as! buildBurgerCollectionViewCell
             //ADD STUFF HERE
-            cell.buildBurgerImageView.image = breadImages[indexPath.row]
-            //cell.buildBurgerImageView.layer.cornerRadius = 20
-            cell.buildBurgerLabel.text = String(breadText[indexPath.row])
+            if currentBuildPage == "ChooseBun" {
+                cell.buildBurgerImageView.image = breadImages[indexPath.row]
+                cell.buildBurgerLabel.text = String(breadText[indexPath.row])
+            }
+            else if currentBuildPage == "Meat" {
+                cell.buildBurgerImageView.image = meatImages[indexPath.row]
+                cell.buildBurgerLabel.text = String(meatText[indexPath.row])
+            }
+            else if currentBuildPage == "Cheese" {
+                cell.buildBurgerImageView.image = cheeseImages[indexPath.row]
+                cell.buildBurgerLabel.text = String(cheeseText[indexPath.row])
+            }
+            else if currentBuildPage == "Topping" {
+                cell.buildBurgerImageView.image = toppingImages[indexPath.row]
+                cell.buildBurgerLabel.text = String(toppingText[indexPath.row])
+            }
+            else if currentBuildPage == "Condiment" {
+                cell.buildBurgerImageView.image = condimentImages[indexPath.row]
+                cell.buildBurgerLabel.text = String(condimentText[indexPath.row])
+            }
+            else if currentBuildPage == "Sides" {
+                cell.buildBurgerImageView.image = sidesImages[indexPath.row]
+                cell.buildBurgerLabel.text = String(sidesText[indexPath.row])
+            }
             return cell
         }
     }
 }
-
