@@ -38,6 +38,14 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
     var images: [UIImage] = [#imageLiteral(resourceName: "Burger_option_9"),#imageLiteral(resourceName: "Burger_option_1"),#imageLiteral(resourceName: "Burger_option_2"),#imageLiteral(resourceName: "Burger_option_3"),#imageLiteral(resourceName: "Burger_option_4"),#imageLiteral(resourceName: "Burger_option_5"),#imageLiteral(resourceName: "Burger_option_6"),#imageLiteral(resourceName: "Burger_option_7"),#imageLiteral(resourceName: "Burger_option_8"),#imageLiteral(resourceName: "Burger_option_9"),#imageLiteral(resourceName: "Burger_option_1"),#imageLiteral(resourceName: "Burger_option_2"),#imageLiteral(resourceName: "Burger_option_3"),#imageLiteral(resourceName: "Burger_option_4"),#imageLiteral(resourceName: "Burger_option_5"),#imageLiteral(resourceName: "Burger_option_6"),#imageLiteral(resourceName: "Burger_option_7"),#imageLiteral(resourceName: "Burger_option_8")]
     var numCount: [Int] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     
+    var breadButtonImageArray: [UIButton] = []
+    var meatButtonImageArray: [UIButton] = []
+    var cheeseButtonImageArray: [UIButton] = []
+    var toppingButtonImageArray: [UIButton] = []
+    var condimentButtonImageArray: [UIButton] = []
+    var sidesButtonImageArray: [UIButton] = []
+    
+    
     let breadImages: [UIImage] = [#imageLiteral(resourceName: "kaiser"),#imageLiteral(resourceName: "Sesame_seed"),#imageLiteral(resourceName: "Chiabata")]
     let breadText: [String] = ["Kaiser", "Sesame Seed", "Chiabatta"]
     
@@ -65,12 +73,69 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBOutlet var buildBurgerCollectionView: UICollectionView!
     
     var currentBuildPage: String = ""
+    var bunCount: [Int] = [0,0,0]
+    
     
     //~~~~~~~~~~~~~~~~~~~~
     @IBAction func buildBurgerButtonOverlayTapped(_ sender: UIButton) {
         let cell = buildBurgerCollectionView.cellForItem(at: IndexPath(row: sender.tag, section: 0)) as! buildBurgerCollectionViewCell
         //sets image to next regular, then large, then xl, then xxl
         //~~~~~ code here
+        print("Hello")
+        for i in 0...2 {
+            let cell = buildBurgerCollectionView.cellForItem(at: IndexPath(row: i, section: 0)) as! buildBurgerCollectionViewCell
+            cell.buildBurgerCustomTypeImageView.image = nil
+        }
+        bunCount = [0,0,0]
+        if currentBuildPage == "ChooseBun" {
+            if sender.tag == 0 {
+                if bunCount[sender.tag] == 0 {
+                    if cell.buildBurgerCustomTypeImageView.image == nil {
+                        cell.buildBurgerCustomTypeImageView.image = #imageLiteral(resourceName: "checkmark")
+                        bunCount[sender.tag] = 1
+                    }
+                }
+                else {
+                    bunCount[sender.tag] = 0
+                }
+            }
+            else if sender.tag == 1 {
+                if bunCount[sender.tag] == 0 {
+                    if cell.buildBurgerCustomTypeImageView.image == nil {
+                        cell.buildBurgerCustomTypeImageView.image = #imageLiteral(resourceName: "checkmark")
+                        bunCount[sender.tag] = 1
+                    }
+                }
+                else {
+                    bunCount[sender.tag] = 0
+                }
+            }
+            else {
+                if bunCount[sender.tag] == 0 {
+                    if cell.buildBurgerCustomTypeImageView.image == nil {
+                        cell.buildBurgerCustomTypeImageView.image = #imageLiteral(resourceName: "checkmark")
+                        bunCount[sender.tag] = 1
+                    }
+                }
+                else {
+                    bunCount[sender.tag] = 0
+                }
+            }
+        }
+        /*else if currentBuildPage == "Meat" {
+            
+        }*/
+        /*else if currentBuildPage == "Cheese" {
+            
+        }
+        else if currentBuildPage == "Topping" {
+            
+        }
+        else if currentBuildPage == "Condiment" {
+            
+        }
+        else if currentBuildPage == "Sides" {*/
+        }
     }
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
@@ -451,6 +516,12 @@ extension FoodViewController: UICollectionViewDataSource {
             if currentBuildPage == "ChooseBun" {
                 cell.buildBurgerImageView.image = breadImages[indexPath.row]
                 cell.buildBurgerLabel.text = String(breadText[indexPath.row])
+                if bunCount[indexPath.row] == 1 {
+                    cell.buildBurgerCustomTypeImageView.image = #imageLiteral(resourceName: "checkmark")
+                }
+                else {
+                    cell.buildBurgerCustomTypeImageView.image = nil
+                }
             }
             else if currentBuildPage == "Meat" {
                 cell.buildBurgerImageView.image = meatImages[indexPath.row]
