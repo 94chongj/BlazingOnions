@@ -11,6 +11,10 @@ import UIKit
 class FoodViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     
+    @IBOutlet var pageOneLabel: UILabel!
+    @IBOutlet var pageTwoLabel: UILabel!
+    @IBOutlet var pageThreeLabel: UILabel!
+    @IBOutlet var pageScrollerView: UIView!
     
     @IBOutlet var serverAlertedView: UIView!
     @IBOutlet var waiterButton: UIButton!
@@ -38,8 +42,8 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBOutlet var rightStackView: UIView!
     
     var isButtonActive: Bool = false
-    var images: [UIImage] = [#imageLiteral(resourceName: "Burger_option_9"),#imageLiteral(resourceName: "Burger_option_1"),#imageLiteral(resourceName: "Burger_option_2"),#imageLiteral(resourceName: "Burger_option_3"),#imageLiteral(resourceName: "Burger_option_4"),#imageLiteral(resourceName: "Burger_option_5"),#imageLiteral(resourceName: "Burger_option_6"),#imageLiteral(resourceName: "Burger_option_7"),#imageLiteral(resourceName: "Burger_option_8"),#imageLiteral(resourceName: "Burger_option_9"),#imageLiteral(resourceName: "Burger_option_1"),#imageLiteral(resourceName: "Burger_option_2"),#imageLiteral(resourceName: "Burger_option_3"),#imageLiteral(resourceName: "Burger_option_4"),#imageLiteral(resourceName: "Burger_option_5"),#imageLiteral(resourceName: "Burger_option_6"),#imageLiteral(resourceName: "Burger_option_7"),#imageLiteral(resourceName: "Burger_option_8")]
-    var numCount: [Int] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    var images: [UIImage] = [#imageLiteral(resourceName: "Burger_option_9"),#imageLiteral(resourceName: "Burger_option_1"),#imageLiteral(resourceName: "Burger_option_2"),#imageLiteral(resourceName: "Burger_option_3"),#imageLiteral(resourceName: "Burger_option_4"),#imageLiteral(resourceName: "Burger_option_5"),#imageLiteral(resourceName: "Burger_option_6"),#imageLiteral(resourceName: "Burger_option_7"),#imageLiteral(resourceName: "Burger_option_8"),#imageLiteral(resourceName: "Burger_option_9"),#imageLiteral(resourceName: "Burger_option_1"),#imageLiteral(resourceName: "Burger_option_2"),#imageLiteral(resourceName: "Burger_option_3"),#imageLiteral(resourceName: "Burger_option_4"),#imageLiteral(resourceName: "Burger_option_5"),#imageLiteral(resourceName: "Burger_option_6"),#imageLiteral(resourceName: "Burger_option_7"),#imageLiteral(resourceName: "Burger_option_8"),#imageLiteral(resourceName: "Burger_option_9"),#imageLiteral(resourceName: "Burger_option_1"),#imageLiteral(resourceName: "Burger_option_2"),#imageLiteral(resourceName: "Burger_option_3"),#imageLiteral(resourceName: "Burger_option_4"),#imageLiteral(resourceName: "Burger_option_5"),#imageLiteral(resourceName: "Burger_option_6"),#imageLiteral(resourceName: "Burger_option_7"),#imageLiteral(resourceName: "Burger_option_8")]
+    var numCount: [Int] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     
     var breadButtonImageArray: [UIButton] = []
     var meatButtonImageArray: [UIButton] = []
@@ -424,6 +428,7 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         foodTopLabel.isHidden = true
         customizeView.isHidden = true
         clearAllData()
+        pageScrollerView.isHidden = true
     }
     
     @IBAction func gourmetButtonPressed(_ sender: UIButton) {
@@ -434,6 +439,7 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         servingSoonView.isHidden = true
         burgerCollectionView.isHidden = false
         foodTopLabel.isHidden = false
+        pageScrollerView.isHidden = false
     }
     
     @IBAction func sandwhichButtonPressed(_ sender: UIButton) {
@@ -446,6 +452,7 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         foodTopLabel.isHidden = true
         customizeView.isHidden = true
         clearAllData()
+        pageScrollerView.isHidden = true
     }
     
     @IBAction func soupButtonPressed(_ sender: UIButton) {
@@ -458,6 +465,7 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         foodTopLabel.isHidden = true
         customizeView.isHidden = true
         clearAllData()
+        pageScrollerView.isHidden = true
     }
     
     
@@ -471,6 +479,7 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         foodTopLabel.isHidden = true
         customizeView.isHidden = true
         clearAllData()
+        pageScrollerView.isHidden = true
     }
     
     @IBAction func blazersButtonPressed(_ sender: UIButton) {
@@ -483,6 +492,7 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         foodTopLabel.isHidden = true
         customizeView.isHidden = true
         clearAllData()
+        pageScrollerView.isHidden = true
     }
     
     // MARK: collectionView Layout, etc functions, and viewdidLoad/Appear
@@ -526,6 +536,27 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
             iconsArray[button].setImage(itemIcon, for: UIControlState.normal)
             iconsArray[button].imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
+        }
+    }
+    
+    let gold: UIColor = UIColor(red: 208.0/255.0, green: 161.0/255.0, blue: 50.0/255.0, alpha: 1.0)
+    
+    //Pagination Setup
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let pageWidth = scrollView.frame.size.width
+        let page = Int(floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1)
+        print("page = \(page)")
+        pageOneLabel.backgroundColor = gold
+        pageTwoLabel.backgroundColor = gold
+        pageThreeLabel.backgroundColor = gold
+        if page == 0 {
+            pageOneLabel.backgroundColor = .white
+        }
+        else if page == 1{
+            pageTwoLabel.backgroundColor = .white
+        }
+        else {
+            pageThreeLabel.backgroundColor = .white
         }
     }
     
@@ -577,7 +608,13 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         buildBurgerCollectionView.delegate = self
         buildBurgerCollectionView.isHidden = true
         customizeView.isHidden = true
-        
+        pageOneLabel.layer.cornerRadius = 5
+        pageOneLabel.clipsToBounds = true
+        pageTwoLabel.layer.cornerRadius = 5
+        pageTwoLabel.clipsToBounds = true
+        pageThreeLabel.layer.cornerRadius = 5
+        pageThreeLabel.clipsToBounds = true
+        pageOneLabel.backgroundColor = .white
     }
     
     override func viewDidAppear(_ animated: Bool) {
