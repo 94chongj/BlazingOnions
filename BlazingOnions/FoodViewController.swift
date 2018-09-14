@@ -80,6 +80,8 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
     var condimentCount: [Int] = [0,0]
     var sidesCount: [Int] = [0,0]
     
+    var isNextButtonTapped: Bool = false
+    
     //~~~~~~~~~~~~~~~~~~~~
     @IBAction func buildBurgerButtonOverlayTapped(_ sender: UIButton) {
         let cell = buildBurgerCollectionView.cellForItem(at: IndexPath(row: sender.tag, section: 0)) as! buildBurgerCollectionViewCell
@@ -206,12 +208,15 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
          }
     }
     
+    var senderTagOnAdd: Int = 0
+    
     @IBAction func addButtonTapped(_ sender: UIButton) {
         let cell = burgerCollectionView.cellForItem(at: IndexPath(row: sender.tag, section: 0)) as! BurgerCollectionViewCell
-        UILabel.animate(withDuration: 0.5, delay: 0, options: .transitionCrossDissolve, animations: {cell.countLabel.alpha = 0}, completion: nil)
+        /*UILabel.animate(withDuration: 0.5, delay: 0, options: .transitionCrossDissolve, animations: {cell.countLabel.alpha = 0}, completion: nil)
         numCount[sender.tag] = numCount[sender.tag] + 1
         cell.countLabel.text = String(numCount[sender.tag])
-        UILabel.animate(withDuration: 0.5, delay: 0, options: .transitionCrossDissolve, animations: {cell.countLabel.alpha = 1}, completion: nil)
+        UILabel.animate(withDuration: 0.5, delay: 0, options: .transitionCrossDissolve, animations: {cell.countLabel.alpha = 1}, completion: nil)*/
+        senderTagOnAdd = sender.tag
         //views that are not hidden anymore
         customizeView.isHidden = false
         
@@ -251,23 +256,27 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
         if currentBuildPage == "Sides" {
+            chooseBunLabel.text = "Choose your condiment:"
             currentBuildPage = "Condiment"
         }
         else if currentBuildPage == "Condiment" {
+            chooseBunLabel.text = "Choose your toppings:"
             currentBuildPage = "Topping"
         }
         else if currentBuildPage == "Topping" {
+            chooseBunLabel.text = "Choose your cheese:"
             currentBuildPage = "Cheese"
         }
         else if currentBuildPage == "Cheese" {
+            chooseBunLabel.text = "Choose your meat:"
             currentBuildPage = "Meat"
         }
         else if currentBuildPage == "Meat" {
+            chooseBunLabel.text = "Choose your bun:"
             currentBuildPage = "ChooseBun"
             nextButton.setTitle("ORDER", for: UIControlState.normal)
         }
         else if currentBuildPage == "ChooseBun" {
-            currentBuildPage = ""
             buildBurgerCollectionView.isHidden = true
             questionImage.isHidden = false
             yesButton.isHidden = false
@@ -284,32 +293,48 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBAction func noButtonPressed(_ sender: UIButton) {
         customizeView.isHidden = true
         burgerCollectionView.isHidden = false
+        bunCount = [0,0,0]
+        meatCount = [0,0,0,0,0]
+        cheeseCount = [0,0]
+        toppingCount = [0,0,0]
+        condimentCount = [0,0]
+        sidesCount = [0,0]
     }
     
     @IBAction func nextButtonPressed(_ sender: UIButton) {
         if currentBuildPage == "ChooseBun" {
+            chooseBunLabel.text = "Choose your meat:"
             currentBuildPage = "Meat"
         }
         else if currentBuildPage == "Meat" {
+            chooseBunLabel.text = "Choose your cheese:"
             currentBuildPage = "Cheese"
         }
         else if currentBuildPage == "Cheese" {
+            chooseBunLabel.text = "Choose your toppings:"
             currentBuildPage = "Topping"
         }
         else if currentBuildPage == "Topping" {
+            chooseBunLabel.text = "Choose your condiment:"
             currentBuildPage = "Condiment"
         }
         else if currentBuildPage == "Condiment" {
+            chooseBunLabel.text = "Choose your side:"
             currentBuildPage = "Sides"
             nextButton.setTitle("ORDER", for: UIControlState.normal)
         }
         else if currentBuildPage == "Sides" {
-            currentBuildPage = ""
+            chooseBunLabel.text = "Choose your bun:"
+            currentBuildPage = "ChooseBun"
+            clearAllData()
             customizeView.isHidden = true
             burgerCollectionView.isHidden = false
+            let cell = burgerCollectionView.cellForItem(at: IndexPath(row: senderTagOnAdd, section: 0)) as! BurgerCollectionViewCell
+            numCount[senderTagOnAdd] = numCount[senderTagOnAdd] + 1
+            cell.countLabel.text = String(numCount[senderTagOnAdd])
+            cell.countLabel.alpha = 1
         }
         buildBurgerCollectionView.reloadData()
-        print(currentBuildPage)
     }
     
     @IBAction func yesButtonPressed(_ sender: UIButton) {
@@ -321,7 +346,6 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         bottomDescriptionLabel.isHidden = false
         chooseBunLabel.isHidden = false
         buildBurgerCollectionView.isHidden = false
-        //might have to do something about currentBuildPage
         currentBuildPage = "ChooseBun"
         buildBurgerCollectionView.reloadData()
     }
@@ -369,6 +393,8 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         servingSoonView.isHidden = false
         burgerCollectionView.isHidden = true
         foodTopLabel.isHidden = true
+        customizeView.isHidden = true
+        clearAllData()
     }
     
     @IBAction func gourmetButtonPressed(_ sender: UIButton) {
@@ -389,6 +415,8 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         servingSoonView.isHidden = false
         burgerCollectionView.isHidden = true
         foodTopLabel.isHidden = true
+        customizeView.isHidden = true
+        clearAllData()
     }
     
     @IBAction func soupButtonPressed(_ sender: UIButton) {
@@ -399,6 +427,8 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         servingSoonView.isHidden = false
         burgerCollectionView.isHidden = true
         foodTopLabel.isHidden = true
+        customizeView.isHidden = true
+        clearAllData()
     }
     
     
@@ -410,6 +440,8 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         servingSoonView.isHidden = false
         burgerCollectionView.isHidden = true
         foodTopLabel.isHidden = true
+        customizeView.isHidden = true
+        clearAllData()
     }
     
     @IBAction func blazersButtonPressed(_ sender: UIButton) {
@@ -420,9 +452,20 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         servingSoonView.isHidden = false
         burgerCollectionView.isHidden = true
         foodTopLabel.isHidden = true
+        customizeView.isHidden = true
+        clearAllData()
     }
     
     // MARK: collectionView Layout, etc functions, and viewdidLoad/Appear
+    
+    func clearAllData() {
+        bunCount = [0,0,0]
+        meatCount = [0,0,0,0,0]
+        cheeseCount = [0,0]
+        toppingCount = [0,0,0]
+        condimentCount = [0,0]
+        sidesCount = [0,0]
+    }
     
     func returnInactiveIcons(buttonID: Int) {
         var iconsArray: [UIButton] = [appetizersButton, gourmetImage, sandwhichButton, soupButton, entreeButton, blazersButton]
