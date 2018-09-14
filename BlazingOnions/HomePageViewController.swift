@@ -10,6 +10,7 @@ import UIKit
 
 class HomePageViewController: UIViewController {
     
+    
     //scrollview's black sidescroller clips on the image
     @IBOutlet var twitterScrollView: UIScrollView!
     @IBOutlet var twitterImageView: UIImageView!
@@ -17,6 +18,9 @@ class HomePageViewController: UIViewController {
     // MARK: Home Page Buttons
     var isButtonActive: Bool = false
     
+    
+    @IBOutlet var serverAlertedView: UIView!
+    @IBOutlet var waiterButton: UIButton!
     @IBOutlet weak var drinkButton: UIButton!
     @IBOutlet weak var foodButton: UIButton!
     @IBOutlet weak var dessertButton: UIButton!
@@ -59,7 +63,6 @@ class HomePageViewController: UIViewController {
             let HomePageViewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "toFoodPage") as UIViewController
             self.present(HomePageViewController, animated: false, completion: nil)
         }
-        print(isButtonActive)
     }
     
     @IBAction func dessertButtonPressed(_ sender: UIButton) {
@@ -79,7 +82,6 @@ class HomePageViewController: UIViewController {
             let HomePageViewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "toDessertPage") as UIViewController
             self.present(HomePageViewController, animated: false, completion: nil)
         }
-        print(isButtonActive)
     }
     
     @IBAction func waiterButtonPressed(_ sender: UIButton) {
@@ -87,15 +89,22 @@ class HomePageViewController: UIViewController {
         if sender.image(for: UIControlState.normal) == #imageLiteral(resourceName: "Waiter_icon_active") {
             sender.alpha = 1
             sender.setImage(#imageLiteral(resourceName: "Waiter_icon_inactive"), for: UIControlState.normal)
+            waiterDataSource.sharedManager.waiterButtonBool = false
         }
         else {
             sender.setImage(#imageLiteral(resourceName: "Waiter_icon_active"), for: UIControlState.normal)
             sender.imageView?.contentMode = .scaleAspectFit
             sender.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
             UIButton.animate(withDuration: 1, delay: 0, options: [.autoreverse,.curveEaseInOut,.repeat,.allowUserInteraction], animations: {sender.alpha = 0.1}, completion: nil)
-
+            serverAlertedView.isHidden = false
+            waiterDataSource.sharedManager.waiterButtonBool = true
         }
     }
+    
+    @IBAction func hideServerAlertedView(_ sender: UIButton) {
+        serverAlertedView.isHidden = true
+    }
+    
     
     @IBAction func totalButton(_ sender: UIButton) {
         
@@ -140,11 +149,7 @@ class HomePageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
+        serverAlertedView.isHidden = true
         specials_1 = #imageLiteral(resourceName: "Specials_banner_1")
         specials_2 = #imageLiteral(resourceName: "Specials_banner_2")
         specialImageArray = [specials_1, specials_2]
@@ -163,7 +168,18 @@ class HomePageViewController: UIViewController {
         instaImageArray = [instaImage_1, instaImage_2, instaImage_3, instaImage_4]
         
         animatePoster(images: instaImageArray)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        waiterButton.alpha = 1
         
+        if waiterDataSource.sharedManager.waiterButtonBool == true {
+            waiterButton.setImage(#imageLiteral(resourceName: "Waiter_icon_active"), for: UIControlState.normal)
+            waiterButton.imageView?.contentMode = .scaleAspectFit
+            waiterButton.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
+            UIButton.animate(withDuration: 1, delay: 0, options: [.autoreverse, .repeat,.allowUserInteraction], animations: {self.waiterButton.alpha = 0.1}, completion: nil)
+        }
     }
     
     

@@ -12,8 +12,7 @@ class TotalViewController: UIViewController {
     
     
     @IBAction func homeButton(_ sender: UIButton) {
-        let TotalViewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "toHomePage") as UIViewController
-        self.present(TotalViewController, animated: false, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     @IBOutlet weak var orderSubmitLabel: UILabel!
@@ -23,6 +22,12 @@ class TotalViewController: UIViewController {
         UIView.animate(withDuration: 2, delay: 0, options: [.curveEaseInOut, .allowUserInteraction], animations: {self.orderSubmitLabel.alpha = 0.0}, completion: nil)
         
     }
+    
+    
+    @IBAction func returnToPreviousPageButtonPressed(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

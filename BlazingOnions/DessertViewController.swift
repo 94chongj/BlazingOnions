@@ -11,6 +11,8 @@ import UIKit
 class DessertViewController: UIViewController {
     
     
+    @IBOutlet var waiterButton: UIButton!
+    
     @IBOutlet weak var dessertButton: UIButton!
     @IBOutlet weak var drinkButton: UIButton!
     @IBOutlet weak var foodButton: UIButton!
@@ -60,16 +62,43 @@ class DessertViewController: UIViewController {
     
     }
     
+    
+    @IBAction func waiterButtonPressed(_ sender: UIButton) {
+        if sender.image(for: UIControlState.normal) == #imageLiteral(resourceName: "Waiter_icon_active") {
+            sender.alpha = 1
+            sender.setImage(#imageLiteral(resourceName: "Waiter_icon_inactive"), for: UIControlState.normal)
+            waiterDataSource.sharedManager.waiterButtonBool = false
+        }
+        else {
+            sender.setImage(#imageLiteral(resourceName: "Waiter_icon_active"), for: UIControlState.normal)
+            sender.imageView?.contentMode = .scaleAspectFit
+            sender.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
+            UIButton.animate(withDuration: 1, delay: 0, options: [.autoreverse,.curveEaseInOut,.repeat,.allowUserInteraction], animations: {sender.alpha = 0.1}, completion: nil)
+            waiterDataSource.sharedManager.waiterButtonBool = true
+        }
+    }
+    
+    
     @IBAction func totalButtonPressed(_ sender: UIButton) {
         let DessertViewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "toTotalPage") as UIViewController
             self.present(DessertViewController, animated: false, completion: nil)
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         dessertButton.setImage(#imageLiteral(resourceName: "Dessert_icon_active"), for: UIControlState.normal)
         dessertButton.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
+        waiterButton.alpha = 1
+        if waiterDataSource.sharedManager.waiterButtonBool == true {
+            waiterButton.setImage(#imageLiteral(resourceName: "Waiter_icon_active"), for: UIControlState.normal)
+            waiterButton.imageView?.contentMode = .scaleAspectFit
+            waiterButton.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
+            UIButton.animate(withDuration: 1, delay: 0, options: [.autoreverse, .repeat,.allowUserInteraction], animations: {self.waiterButton.alpha = 0.1}, completion: nil)
+        }
     }
     
 }

@@ -21,6 +21,7 @@
 		ABAA023D214973E800C0A76B /* BurgerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABAA023B214973E800C0A76B /* BurgerCollectionViewCell.xib */; };
 		ABAA02402149DAE900C0A76B /* buildBurgerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAA023E2149DAE900C0A76B /* buildBurgerCollectionViewCell.swift */; };
 		ABAA02412149DAE900C0A76B /* buildBurgerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABAA023F2149DAE900C0A76B /* buildBurgerCollectionViewCell.xib */; };
+		ABAA0243214C247B00C0A76B /* waiterDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAA0242214C247B00C0A76B /* waiterDataSource.swift */; };
 		ABADF9B221430988002B2E0C /* totalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABADF9B121430988002B2E0C /* totalViewController.swift */; };
 		ABADF9B421433445002B2E0C /* FoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABADF9B321433445002B2E0C /* FoodViewController.swift */; };
 		ABADF9B6214343EE002B2E0C /* DrinksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABADF9B5214343EE002B2E0C /* DrinksViewController.swift */; };
@@ -66,6 +67,7 @@
 		ABAA023B214973E800C0A76B /* BurgerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BurgerCollectionViewCell.xib; sourceTree = "<group>"; };
 		ABAA023E2149DAE900C0A76B /* buildBurgerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = buildBurgerCollectionViewCell.swift; sourceTree = "<group>"; };
 		ABAA023F2149DAE900C0A76B /* buildBurgerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = buildBurgerCollectionViewCell.xib; sourceTree = "<group>"; };
+		ABAA0242214C247B00C0A76B /* waiterDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = waiterDataSource.swift; sourceTree = "<group>"; };
 		ABADF9B121430988002B2E0C /* totalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = totalViewController.swift; sourceTree = "<group>"; };
 		ABADF9B321433445002B2E0C /* FoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodViewController.swift; sourceTree = "<group>"; };
 		ABADF9B5214343EE002B2E0C /* DrinksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinksViewController.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				ABAA023B214973E800C0A76B /* BurgerCollectionViewCell.xib */,
 				ABAA023E2149DAE900C0A76B /* buildBurgerCollectionViewCell.swift */,
 				ABAA023F2149DAE900C0A76B /* buildBurgerCollectionViewCell.xib */,
+				ABAA0242214C247B00C0A76B /* waiterDataSource.swift */,
 			);
 			path = BlazingOnions;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 				ABADF9B421433445002B2E0C /* FoodViewController.swift in Sources */,
 				AB6AF12621404A7F006444FA /* AppDelegate.swift in Sources */,
 				ABADF9B6214343EE002B2E0C /* DrinksViewController.swift in Sources */,
+				ABAA0243214C247B00C0A76B /* waiterDataSource.swift in Sources */,
 				ABAA0238214866CB00C0A76B /* DrinksCollectionViewCell.swift in Sources */,
 				ABADF9B821434412002B2E0C /* DessertViewController.swift in Sources */,
 				ABF260672141A31C0003EF1F /* HomePageViewController.swift in Sources */,
