@@ -11,8 +11,9 @@ import UIKit
 class DessertViewController: UIViewController {
     
     
-    @IBOutlet var waiterButton: UIButton!
     
+    @IBOutlet var serverAlertedView: UIView!
+    @IBOutlet var waiterButton: UIButton!
     @IBOutlet weak var dessertButton: UIButton!
     @IBOutlet weak var drinkButton: UIButton!
     @IBOutlet weak var foodButton: UIButton!
@@ -62,6 +63,9 @@ class DessertViewController: UIViewController {
     
     }
     
+    @IBAction func dessertButtonPressed(_ sender: UIButton) {
+    }
+    
     
     @IBAction func waiterButtonPressed(_ sender: UIButton) {
         if sender.image(for: UIControlState.normal) == #imageLiteral(resourceName: "Waiter_icon_active") {
@@ -75,7 +79,14 @@ class DessertViewController: UIViewController {
             sender.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
             UIButton.animate(withDuration: 1, delay: 0, options: [.autoreverse,.curveEaseInOut,.repeat,.allowUserInteraction], animations: {sender.alpha = 0.1}, completion: nil)
             waiterDataSource.sharedManager.waiterButtonBool = true
+            serverAlertedView.isHidden = false
+            waiterDataSource.sharedManager.serverViewStays = true
         }
+    }
+    
+    @IBAction func hideServerAlertedView(_ sender: UIButton) {
+        serverAlertedView.isHidden = true
+        waiterDataSource.sharedManager.serverViewStays = false
     }
     
     
@@ -86,6 +97,7 @@ class DessertViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        serverAlertedView.isHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -93,6 +105,9 @@ class DessertViewController: UIViewController {
         dessertButton.setImage(#imageLiteral(resourceName: "Dessert_icon_active"), for: UIControlState.normal)
         dessertButton.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
         waiterButton.alpha = 1
+        if waiterDataSource.sharedManager.serverViewStays == true {
+            serverAlertedView.isHidden = false
+        }
         if waiterDataSource.sharedManager.waiterButtonBool == true {
             waiterButton.setImage(#imageLiteral(resourceName: "Waiter_icon_active"), for: UIControlState.normal)
             waiterButton.imageView?.contentMode = .scaleAspectFit

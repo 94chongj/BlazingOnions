@@ -11,6 +11,8 @@ import UIKit
 class FoodViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     
+    
+    @IBOutlet var serverAlertedView: UIView!
     @IBOutlet var waiterButton: UIButton!
     @IBOutlet weak var drinkButton: UIButton!
     @IBOutlet weak var foodButton: UIButton!
@@ -83,7 +85,7 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     var isNextButtonTapped: Bool = false
     
-    //~~~~~~~~~~~~~~~~~~~~
+    
     @IBAction func buildBurgerButtonOverlayTapped(_ sender: UIButton) {
         let cell = buildBurgerCollectionView.cellForItem(at: IndexPath(row: sender.tag, section: 0)) as! buildBurgerCollectionViewCell
         //sets image to next regular, then large, then xl, then xxl
@@ -212,7 +214,7 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
     var senderTagOnAdd: Int = 0
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
-        let cell = burgerCollectionView.cellForItem(at: IndexPath(row: sender.tag, section: 0)) as! BurgerCollectionViewCell
+        //let cell = burgerCollectionView.cellForItem(at: IndexPath(row: sender.tag, section: 0)) as! BurgerCollectionViewCell
         /*UILabel.animate(withDuration: 0.5, delay: 0, options: .transitionCrossDissolve, animations: {cell.countLabel.alpha = 0}, completion: nil)
         numCount[sender.tag] = numCount[sender.tag] + 1
         cell.countLabel.text = String(numCount[sender.tag])
@@ -394,7 +396,14 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
             sender.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
             UIButton.animate(withDuration: 1, delay: 0, options: [.autoreverse,.curveEaseInOut,.repeat,.allowUserInteraction], animations: {sender.alpha = 0.1}, completion: nil)
             waiterDataSource.sharedManager.waiterButtonBool = true
+            serverAlertedView.isHidden = false
+            waiterDataSource.sharedManager.serverViewStays = true
         }
+    }
+    
+    @IBAction func hideServerAlertedView(_ sender: UIButton) {
+        serverAlertedView.isHidden = true
+        waiterDataSource.sharedManager.serverViewStays = false
     }
     
     
@@ -402,6 +411,8 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let FoodViewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "toTotalPage") as UIViewController
         self.present(FoodViewController, animated: false, completion: nil)
     }
+    
+    //MARK: Other Buttons
     
     @IBAction func appetizersButtonPressed(_ sender: UIButton) {
         appetizersButton.setImage(#imageLiteral(resourceName: "fries_icon-active"), for: UIControlState.normal)
@@ -530,6 +541,7 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        serverAlertedView.isHidden = true
         foodButton.setImage(#imageLiteral(resourceName: "Burger_Icon_active"), for: UIControlState.normal)
         foodButton.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
         gourmetImage.setImage(#imageLiteral(resourceName: "Burger_Icon_active"), for: UIControlState.normal)
@@ -572,6 +584,9 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         super.viewDidAppear(true)
         burgerCollectionView.reloadData()
         waiterButton.alpha = 1
+        if waiterDataSource.sharedManager.serverViewStays == true {
+            serverAlertedView.isHidden = false
+        }
         if waiterDataSource.sharedManager.waiterButtonBool == true {
             waiterButton.setImage(#imageLiteral(resourceName: "Waiter_icon_active"), for: UIControlState.normal)
             waiterButton.imageView?.contentMode = .scaleAspectFit
@@ -628,7 +643,7 @@ extension FoodViewController: UICollectionViewDataSource {
             cell.minusButton.addTarget(self, action: #selector(minusButtonTapped), for: UIControlEvents.touchUpInside)
             cell.minusButton.backgroundColor = .clear
             cell.countLabel.tag = indexPath.row
-            cell.countLabel.layer.cornerRadius = 11
+            cell.countLabel.layer.cornerRadius = 10
             //Button is not fully visible because colors?
             cell.countLabel.clipsToBounds = true
             cell.countLabel.text = String(numCount[indexPath.row])

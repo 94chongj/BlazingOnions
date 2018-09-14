@@ -10,14 +10,11 @@ import UIKit
 
 class HomePageViewController: UIViewController {
     
-    
-    //scrollview's black sidescroller clips on the image
     @IBOutlet var twitterScrollView: UIScrollView!
     @IBOutlet var twitterImageView: UIImageView!
     
     // MARK: Home Page Buttons
     var isButtonActive: Bool = false
-    
     
     @IBOutlet var serverAlertedView: UIView!
     @IBOutlet var waiterButton: UIButton!
@@ -26,7 +23,6 @@ class HomePageViewController: UIViewController {
     @IBOutlet weak var dessertButton: UIButton!
     
     @IBAction func drinkButtonPressed(_ sender: UIButton) {
-        //[<BlazingOnions.DrinksViewController 0x7fb493e28ad0> setValue:forUndefinedKey:]: this class is not key value coding-compliant for the key dessertButton.' Wasn't an issue before I tried jumping to the "toDrinksPage"
 
         if isButtonActive == true {
             foodButton.setImage(#imageLiteral(resourceName: "Burger_Icon_inactive"), for: UIControlState.normal)
@@ -98,11 +94,13 @@ class HomePageViewController: UIViewController {
             UIButton.animate(withDuration: 1, delay: 0, options: [.autoreverse,.curveEaseInOut,.repeat,.allowUserInteraction], animations: {sender.alpha = 0.1}, completion: nil)
             serverAlertedView.isHidden = false
             waiterDataSource.sharedManager.waiterButtonBool = true
+            waiterDataSource.sharedManager.serverViewStays = true
         }
     }
     
     @IBAction func hideServerAlertedView(_ sender: UIButton) {
         serverAlertedView.isHidden = true
+        waiterDataSource.sharedManager.serverViewStays = false
     }
     
     
@@ -173,7 +171,9 @@ class HomePageViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         waiterButton.alpha = 1
-        
+        if waiterDataSource.sharedManager.serverViewStays == true {
+            serverAlertedView.isHidden = false
+        }
         if waiterDataSource.sharedManager.waiterButtonBool == true {
             waiterButton.setImage(#imageLiteral(resourceName: "Waiter_icon_active"), for: UIControlState.normal)
             waiterButton.imageView?.contentMode = .scaleAspectFit

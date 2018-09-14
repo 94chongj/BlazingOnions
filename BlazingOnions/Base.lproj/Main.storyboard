@@ -1188,6 +1188,7 @@
                                             <constraint firstAttribute="height" constant="39" id="xG5-5S-5ms"/>
                                         </constraints>
                                         <connections>
+                                            <action selector="hideServerAlertedView:" destination="NHW-5c-Wbb" eventType="touchUpInside" id="IpN-b4-a4B"/>
                                             <action selector="hideServerAlertedView:" destination="KMC-GA-fug" eventType="touchUpInside" id="h6D-cN-6IN"/>
                                             <action selector="hideServerAlertedView:" destination="pEs-CO-nBS" eventType="touchUpInside" id="qkc-ky-BOx"/>
                                         </connections>
@@ -1265,6 +1266,7 @@
                         <outlet property="questionImage" destination="orH-yB-weV" id="Vkd-4l-0r7"/>
                         <outlet property="rightStackView" destination="bDL-sY-uNU" id="xZ2-bg-p8G"/>
                         <outlet property="sandwhichButton" destination="09C-Sa-YcT" id="EvN-00-39g"/>
+                        <outlet property="serverAlertedView" destination="fe7-sD-Ih6" id="qcb-Id-hOM"/>
                         <outlet property="servingSoonView" destination="M4E-y4-GwI" id="XnS-cX-SxI"/>
                         <outlet property="soupButton" destination="Nhc-5v-wCb" id="MSo-Oi-xan"/>
                         <outlet property="waiterButton" destination="hg5-mm-ODE" id="SVD-rC-HH9"/>
@@ -1655,17 +1657,17 @@
                                     <constraint firstAttribute="height" constant="652" id="FpD-5c-ZCY"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="WmH-a6-TCq">
-                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="itemSize" width="200" height="200"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DrinksCollectionVewCell" id="Ab8-2R-ywV" customClass="DrinksCollectionViewCell" customModule="BlazingOnions" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1909,7 +1911,7 @@
                                         </constraints>
                                         <state key="normal" image="Dessert_icon_inactive"/>
                                         <connections>
-                                            <action selector="dessertButtonPressed:" destination="1UJ-aN-R9r" eventType="touchUpInside" id="XFD-o1-UEc"/>
+                                            <action selector="dessertButtonPressed:" destination="1UJ-aN-R9r" eventType="touchUpInside" id="w15-bb-Wi9"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8LN-jJ-cNI" userLabel="WaiterButton">
@@ -2037,6 +2039,7 @@
                                         </constraints>
                                         <connections>
                                             <action selector="hideServerAlertedView:" destination="KMC-GA-fug" eventType="touchUpInside" id="XeR-ms-X6L"/>
+                                            <action selector="hideServerAlertedView:" destination="1UJ-aN-R9r" eventType="touchUpInside" id="qAv-wG-vfk"/>
                                             <action selector="hideServerAlertedView:" destination="pEs-CO-nBS" eventType="touchUpInside" id="xax-Yf-3cQ"/>
                                         </connections>
                                     </button>
@@ -2083,6 +2086,7 @@
                         <outlet property="dessertButton" destination="AMm-Dd-U40" id="Ka1-TY-N0f"/>
                         <outlet property="drinkButton" destination="LAx-He-yha" id="GpR-hX-Tcg"/>
                         <outlet property="foodButton" destination="2Ar-Lr-FKI" id="6yd-6G-iz5"/>
+                        <outlet property="serverAlertedView" destination="uLt-9Q-drc" id="IH3-zX-gbP"/>
                         <outlet property="waiterButton" destination="8LN-jJ-cNI" id="AaU-sU-khw"/>
                     </connections>
                 </viewController>

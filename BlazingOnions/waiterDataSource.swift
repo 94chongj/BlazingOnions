@@ -11,6 +11,7 @@ import UIKit
 class waiterDataSource {
     
     var waiterButtonBool: Bool = false
+    var serverViewStays: Bool = false
     
     class var sharedManager: waiterDataSource {
         struct Static {
