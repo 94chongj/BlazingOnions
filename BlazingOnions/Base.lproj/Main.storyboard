@@ -1561,6 +1561,22 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F3f-ol-y93" userLabel="servingSoonView">
+                                <rect key="frame" x="280" y="0.0" width="744" height="768"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SERVING SOON..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t4X-Gq-kK2">
+                                        <rect key="frame" x="296" y="374" width="153" height="21.5"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="t4X-Gq-kK2" firstAttribute="centerY" secondItem="F3f-ol-y93" secondAttribute="centerY" id="PM3-6t-9j9"/>
+                                    <constraint firstItem="t4X-Gq-kK2" firstAttribute="centerX" secondItem="F3f-ol-y93" secondAttribute="centerX" id="qSJ-9P-gjc"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p18-2l-ILj" userLabel="drinksFountainTab">
                                 <rect key="frame" x="319" y="6" width="311" height="58"/>
                                 <subviews>
@@ -1641,22 +1657,6 @@
                                     <constraint firstAttribute="bottom" secondItem="5Aa-SL-huw" secondAttribute="bottom" constant="22" id="tCI-8Z-3SD"/>
                                     <constraint firstAttribute="bottom" secondItem="fvB-a1-uIZ" secondAttribute="bottom" constant="22" id="vHK-c3-4RI"/>
                                     <constraint firstItem="9p3-hN-gFC" firstAttribute="top" secondItem="p18-2l-ILj" secondAttribute="top" constant="12" id="wjx-yw-C9f"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F3f-ol-y93" userLabel="servingSoonView">
-                                <rect key="frame" x="280" y="0.0" width="744" height="768"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SERVING SOON..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t4X-Gq-kK2">
-                                        <rect key="frame" x="296" y="374" width="153" height="21.5"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="t4X-Gq-kK2" firstAttribute="centerY" secondItem="F3f-ol-y93" secondAttribute="centerY" id="PM3-6t-9j9"/>
-                                    <constraint firstItem="t4X-Gq-kK2" firstAttribute="centerX" secondItem="F3f-ol-y93" secondAttribute="centerX" id="qSJ-9P-gjc"/>
                                 </constraints>
                             </view>
                         </subviews>
