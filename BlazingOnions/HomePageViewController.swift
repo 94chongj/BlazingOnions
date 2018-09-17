@@ -13,72 +13,37 @@ class HomePageViewController: UIViewController {
     @IBOutlet var majorButtonBorderView: UIView!
     @IBOutlet var twitterScrollView: UIScrollView!
     @IBOutlet var twitterImageView: UIImageView!
-    
-    // MARK: Home Page Buttons
-    var isButtonActive: Bool = false
-    
     @IBOutlet var serverAlertedView: UIView!
     @IBOutlet var waiterButton: UIButton!
     @IBOutlet weak var drinkButton: UIButton!
     @IBOutlet weak var foodButton: UIButton!
     @IBOutlet weak var dessertButton: UIButton!
     
+    // MARK: Home Page Buttons
     @IBAction func drinkButtonPressed(_ sender: UIButton) {
+        sender.setImage(#imageLiteral(resourceName: "Drink_Icon_active"), for: UIControlState.normal)
+        sender.imageView?.contentMode = .scaleAspectFit
+        sender.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
+        let HomePageViewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "toDrinksPage") as UIViewController
+        self.present(HomePageViewController, animated: false, completion: nil)
 
-        if isButtonActive == true {
-            foodButton.setImage(#imageLiteral(resourceName: "Burger_Icon_inactive"), for: UIControlState.normal)
-            dessertButton.setImage(#imageLiteral(resourceName: "Dessert_icon_inactive"), for: UIControlState.normal)
-        }
-        if sender.image(for: UIControlState.normal) == #imageLiteral(resourceName: "Drink_Icon_active") {
-            sender.setImage(#imageLiteral(resourceName: "Drink_Icon_inactive"), for: UIControlState.normal)
-            isButtonActive = false
-        }
-        else {
-            sender.setImage(#imageLiteral(resourceName: "Drink_Icon_active"), for: UIControlState.normal)
-            sender.imageView?.contentMode = .scaleAspectFit
-            sender.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
-            isButtonActive = true
-            let HomePageViewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "toDrinksPage") as UIViewController
-            self.present(HomePageViewController, animated: false, completion: nil)
-            }
     }
     
     @IBAction func foodButtonPressed(_ sender: UIButton) {
-        if isButtonActive == true {
-            drinkButton.setImage(#imageLiteral(resourceName: "Drink_Icon_inactive"), for: UIControlState.normal)
-            dessertButton.setImage(#imageLiteral(resourceName: "Dessert_icon_inactive"), for: UIControlState.normal)
-        }
-        if sender.image(for: UIControlState.normal) == #imageLiteral(resourceName: "Burger_Icon_active") {
-            sender.setImage(#imageLiteral(resourceName: "Burger_Icon_inactive"), for: UIControlState.normal)
-            isButtonActive = false
-        }
-        else {
-            sender.setImage(#imageLiteral(resourceName: "Burger_Icon_active"), for: UIControlState.normal)
-            sender.imageView?.contentMode = .scaleAspectFit
-            sender.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
-            isButtonActive = true
-            let HomePageViewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "toFoodPage") as UIViewController
-            self.present(HomePageViewController, animated: false, completion: nil)
-        }
+        sender.setImage(#imageLiteral(resourceName: "Burger_Icon_active"), for: UIControlState.normal)
+        sender.imageView?.contentMode = .scaleAspectFit
+        sender.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
+        let HomePageViewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "toFoodPage") as UIViewController
+        self.present(HomePageViewController, animated: false, completion: nil)
     }
     
     @IBAction func dessertButtonPressed(_ sender: UIButton) {
-        if isButtonActive == true {
-            drinkButton.setImage(#imageLiteral(resourceName: "Drink_Icon_inactive"), for: UIControlState.normal)
-            foodButton.setImage(#imageLiteral(resourceName: "Burger_Icon_inactive"), for: UIControlState.normal)
-        }
-        if sender.image(for: UIControlState.normal) == #imageLiteral(resourceName: "Dessert_icon_active") {
-            sender.setImage(#imageLiteral(resourceName: "Dessert_icon_inactive"), for: UIControlState.normal)
-            isButtonActive = false
-        }
-        else {
-            sender.setImage(#imageLiteral(resourceName: "Dessert_icon_active"), for: UIControlState.normal)
-            sender.imageView?.contentMode = .scaleAspectFit
-            sender.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
-            isButtonActive = true
-            let HomePageViewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "toDessertPage") as UIViewController
-            self.present(HomePageViewController, animated: false, completion: nil)
-        }
+        sender.setImage(#imageLiteral(resourceName: "Dessert_icon_active"), for: UIControlState.normal)
+        sender.imageView?.contentMode = .scaleAspectFit
+        sender.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
+        let HomePageViewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "toDessertPage") as UIViewController
+        self.present(HomePageViewController, animated: false, completion: nil)
+        
     }
     
     @IBAction func waiterButtonPressed(_ sender: UIButton) {
@@ -115,13 +80,10 @@ class HomePageViewController: UIViewController {
     //UIImages Animation Array Transitions
     
     @IBOutlet weak var specialsImages: UIImageView!
-    
     @IBOutlet weak var instaImages: UIImageView!
     
     var specialImageArray: [String] = ["Specials_banner_1", "Specials_banner_2"]
     var instaImageArray: [String] = ["insta_image_4", "insta_image_1", "insta_image_2", "insta_image_3"]
-    
-    var isAnimating: Bool = false
     var specialImageArrayCount: Int = 0
     var specialsTimer = Timer()
     var instaImageCount: Int = 0
@@ -146,10 +108,6 @@ class HomePageViewController: UIViewController {
         }
         UIView.transition(with: self.instaImages, duration: 1.5, options: .transitionCrossDissolve, animations: {self.instaImages.image = UIImage.init(named: self.instaImageArray[self.instaImageCount])}, completion: nil)
     }
-    
-    
-    let borderColor: UIColor = UIColor(red: 62.0/255.0, green: 13.0/255.0, blue: 1.0/255.0, alpha: 1)
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

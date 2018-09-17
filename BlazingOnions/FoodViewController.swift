@@ -86,10 +86,14 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     let darkGreyColor: UIColor = UIColor(red: 77.0/255.0, green: 77.0/255.0, blue: 77.0/255.0, alpha: 1.0)
     
+    let gold: UIColor = UIColor(red: 208.0/255.0, green: 161.0/255.0, blue: 50.0/255.0, alpha: 1.0)
+    
+    let fadedRed: UIColor = UIColor(red: 62.0/255.0, green: 13.0/255.0, blue: 1.0/255.0, alpha: 1.0)
+    
     @IBOutlet var burgerCollectionView: UICollectionView!
     @IBOutlet var foodTopLabel: UILabel!
     
-    // MARK: Currently working on buildBurgerCollectionView
+    // MARK: buildBurgerCollectionView
     @IBOutlet var buildBurgerCollectionView: UICollectionView!
     
     var currentBuildPage: String = ""
@@ -102,11 +106,9 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     var isNextButtonTapped: Bool = false
     
-    
+    //Logic for customizing burger in buildBurgerCollectionView
     @IBAction func buildBurgerButtonOverlayTapped(_ sender: UIButton) {
         let cell = buildBurgerCollectionView.cellForItem(at: IndexPath(row: sender.tag, section: 0)) as! buildBurgerCollectionViewCell
-        //sets image to next regular, then large, then xl, then xxl
-        //~~~~~ code here
         if currentBuildPage == "ChooseBun" {
             for i in 0...2 {
                 let cell = buildBurgerCollectionView.cellForItem(at: IndexPath(row: i, section: 0)) as! buildBurgerCollectionViewCell
@@ -228,24 +230,22 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
          }
     }
     
+    
     var senderTagOnAdd: Int = 0
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
-        //let cell = burgerCollectionView.cellForItem(at: IndexPath(row: sender.tag, section: 0)) as! BurgerCollectionViewCell
-        /*UILabel.animate(withDuration: 0.5, delay: 0, options: .transitionCrossDissolve, animations: {cell.countLabel.alpha = 0}, completion: nil)
-        numCount[sender.tag] = numCount[sender.tag] + 1
-        cell.countLabel.text = String(numCount[sender.tag])
-        UILabel.animate(withDuration: 0.5, delay: 0, options: .transitionCrossDissolve, animations: {cell.countLabel.alpha = 1}, completion: nil)*/
         senderTagOnAdd = sender.tag
+        
         //views that are not hidden anymore
         customizeView.isHidden = false
+        yesButton.isHidden = false
+        noButton.isHidden = false
+        questionImage.isHidden = false
         
         //views that need to be hidden
         burgerCollectionView.isHidden = true
         cancelButton.isHidden = true
         nextButton.isHidden = true
-        yesButton.isHidden = false
-        noButton.isHidden = false
         bottomDescriptionLabel.isHidden = true
         chooseBunLabel.isHidden = true
         questionImage.isHidden = false
@@ -255,7 +255,6 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     @IBAction func minusButtonTapped(_ sender: UIButton) {
-        //1 to 0 transition is not smooth on button
         let cell = burgerCollectionView.cellForItem(at: IndexPath(row: sender.tag, section: 0)) as! BurgerCollectionViewCell
         if numCount[sender.tag] == 0 {
             numCount[sender.tag] = 0
@@ -423,11 +422,6 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
-    @IBAction func hideServerAlertedView(_ sender: UIButton) {
-        serverAlertedView.isHidden = true
-        waiterDataSource.sharedManager.serverViewStays = false
-    }
-    
     
     @IBAction func totalButton(_ sender: UIButton) {
         let FoodViewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "toTotalPage") as UIViewController
@@ -435,6 +429,11 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     //MARK: Other Buttons
+    
+    @IBAction func hideServerAlertedView(_ sender: UIButton) {
+        serverAlertedView.isHidden = true
+        waiterDataSource.sharedManager.serverViewStays = false
+    }
     
     @IBAction func appetizersButtonPressed(_ sender: UIButton) {
         appetizersButton.setImage(#imageLiteral(resourceName: "fries_icon-active"), for: UIControlState.normal)
@@ -511,7 +510,7 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         blazersLabel.textColor = gold
     }
     
-    // MARK: collectionView Layout, etc functions, and viewdidLoad/Appear
+    // MARK: collectionView Layout, other functions, and viewdidLoad/Appear
     
     func exceptGourmetButtonSettings() {
         servingSoonView.isHidden = false
@@ -578,10 +577,6 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
-    let gold: UIColor = UIColor(red: 208.0/255.0, green: 161.0/255.0, blue: 50.0/255.0, alpha: 1.0)
-    
-    let fadedRed: UIColor = UIColor(red: 62.0/255.0, green: 13.0/255.0, blue: 1.0/255.0, alpha: 1.0)
-    
     //Pagination Setup
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let pageWidth = scrollView.frame.size.width //change this value so it scrolls appropriately
@@ -625,13 +620,11 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         //registering and setting datasource/delegate for burgerCollectionView/Cell
         burgerCollectionView.register(UINib(nibName: "BurgerCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "BurgerCollectionViewCell")
         burgerCollectionView.dataSource = self
-            //requires setting collectionView.delegate to self in order for extension to work
-        self.burgerCollectionView.delegate = self
+        burgerCollectionView.delegate = self
         if let layout = burgerCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .horizontal
-            layout.minimumLineSpacing = 34 //in between columns
-            layout.minimumInteritemSpacing = 12 //in between rows
-            //sectionInset lets me modify the distance from the outer edge of the collectionview to the cell from all 4 directions
+            layout.minimumLineSpacing = 34
+            layout.minimumInteritemSpacing = 12
             layout.sectionInset = UIEdgeInsetsMake(0, 21, 0, 16)
         if let layout = buildBurgerCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.sectionInset = UIEdgeInsetsMake(10, 18, 0, 18)
@@ -679,7 +672,7 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
 }
 
-    // MARK: Extensions(UICollectionViewDataSource)
+    // MARK: Extension(UICollectionViewDataSource)
 extension FoodViewController: UICollectionViewDataSource {
     
     
@@ -713,7 +706,7 @@ extension FoodViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == burgerCollectionView {
-            //first Burger Collection View showing all burgers
+            //first Burger Collection View showing all base burgers
             let cell: BurgerCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "BurgerCollectionViewCell", for: indexPath) as! BurgerCollectionViewCell
             cell.cellView.layer.cornerRadius = 20
             cell.burgerImageView.image = images[indexPath.row]
@@ -738,7 +731,7 @@ extension FoodViewController: UICollectionViewDataSource {
             return cell
         }
         else {
-            //second Burger Collection View showing build a burger pages
+            //build Burger Collection View allowing customization
             let cell: buildBurgerCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "buildBurgerCollectionViewCell", for: indexPath) as! buildBurgerCollectionViewCell
             cell.buildBurgerButtonOverlay.tag = indexPath.row
             cell.buildBurgerButtonOverlay.addTarget(self, action: #selector(buildBurgerButtonOverlayTapped), for: UIControlEvents.touchUpInside)

@@ -18,8 +18,8 @@ class DessertViewController: UIViewController {
     @IBOutlet weak var dessertButton: UIButton!
     @IBOutlet weak var drinkButton: UIButton!
     @IBOutlet weak var foodButton: UIButton!
-    var isButtonActive: Bool = true
     
+    //MARK: Major Buttons
     @IBAction func homeButtonPressed(_ sender: UIButton) {
         let DessertViewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "toHomePage") as UIViewController
         self.present(DessertViewController, animated: false, completion: nil)
@@ -27,38 +27,16 @@ class DessertViewController: UIViewController {
     
     
     @IBAction func drinksButtonPressed(_ sender: UIButton) {
-        if isButtonActive == true {
-            foodButton.setImage(#imageLiteral(resourceName: "Burger_Icon_inactive"), for: UIControlState.normal)
-            dessertButton.setImage(#imageLiteral(resourceName: "Dessert_icon_inactive"), for: UIControlState.normal)
-        }
-        if sender.image(for: UIControlState.normal) == #imageLiteral(resourceName: "Drink_Icon_active") {
-            sender.setImage(#imageLiteral(resourceName: "Drink_Icon_inactive"), for: UIControlState.normal)
-            isButtonActive = false
-        }
-        else {
-            sender.setImage(#imageLiteral(resourceName: "Drink_Icon_active"), for: UIControlState.normal)
-            sender.imageView?.contentMode = .scaleAspectFit
-            sender.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
-            let FoodViewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "toDrinksPage") as UIViewController
-            self.present(FoodViewController, animated: false, completion: nil)
-        }
+        sender.setImage(#imageLiteral(resourceName: "Drink_Icon_active"), for: UIControlState.normal)
+        sender.imageView?.contentMode = .scaleAspectFit
+        sender.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
+        let FoodViewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "toDrinksPage") as UIViewController
+        self.present(FoodViewController, animated: false, completion: nil)
+        
     }
     
     
     @IBAction func foodButtonPressed(_ sender: UIButton) {
-        /*if isButtonActive == true {
-            drinkButton.setImage(#imageLiteral(resourceName: "Drink_Icon_inactive"), for: UIControlState.normal)
-            dessertButton.setImage(#imageLiteral(resourceName: "Dessert_icon_inactive"), for: UIControlState.normal)
-        }
-        if sender.image(for: UIControlState.normal) == #imageLiteral(resourceName: "Burger_Icon_active") {
-            sender.setImage(#imageLiteral(resourceName: "Burger_Icon_inactive"), for: UIControlState.normal)
-            isButtonActive = false
-        }
-        else {*/
-        sender.setImage(#imageLiteral(resourceName: "Burger_Icon_active"), for: UIControlState.normal)
-        sender.imageView?.contentMode = .scaleAspectFit
-        sender.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
-        isButtonActive = true
         let HomePageViewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "toFoodPage") as UIViewController
         self.present(HomePageViewController, animated: false, completion: nil)
     
@@ -79,6 +57,7 @@ class DessertViewController: UIViewController {
             sender.imageView?.contentMode = .scaleAspectFit
             sender.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
             UIButton.animate(withDuration: 1, delay: 0, options: [.autoreverse,.curveEaseInOut,.repeat,.allowUserInteraction], animations: {sender.alpha = 0.1}, completion: nil)
+            servingSoonView.isHidden = true
             waiterDataSource.sharedManager.waiterButtonBool = true
             serverAlertedView.isHidden = false
             waiterDataSource.sharedManager.serverViewStays = true
@@ -104,6 +83,9 @@ class DessertViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+        if waiterDataSource.sharedManager.serverViewStays == true {
+            servingSoonView.isHidden = true
+        }
         dessertButton.setImage(#imageLiteral(resourceName: "Dessert_icon_active"), for: UIControlState.normal)
         dessertButton.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
         waiterButton.alpha = 1
