@@ -50,11 +50,11 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zUa-zn-oA2">
-                                <rect key="frame" x="90" y="137" width="20" height="20"/>
+                                <rect key="frame" x="80" y="127" width="40" height="40"/>
                                 <color key="backgroundColor" red="0.81568627450980391" green="0.63137254901960782" blue="0.19607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="20" id="BwS-UW-Ebx"/>
-                                    <constraint firstAttribute="height" constant="20" id="THz-3i-nQ7"/>
+                                    <constraint firstAttribute="width" constant="40" id="BwS-UW-Ebx"/>
+                                    <constraint firstAttribute="height" constant="40" id="THz-3i-nQ7"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -64,14 +64,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="154-vQ-MIf" secondAttribute="bottom" id="6dF-ei-7Gs"/>
-                            <constraint firstItem="zUa-zn-oA2" firstAttribute="centerX" secondItem="TWB-cP-aHZ" secondAttribute="centerX" id="6zY-A8-4if"/>
                             <constraint firstAttribute="trailing" secondItem="154-vQ-MIf" secondAttribute="trailing" id="Hcy-vc-DZ7"/>
+                            <constraint firstItem="zUa-zn-oA2" firstAttribute="centerX" secondItem="TWB-cP-aHZ" secondAttribute="centerX" id="RUa-5P-3Cj"/>
+                            <constraint firstAttribute="bottom" secondItem="zUa-zn-oA2" secondAttribute="bottom" constant="33" id="as8-aK-nMK"/>
                             <constraint firstAttribute="bottom" secondItem="4KJ-RM-E4q" secondAttribute="bottom" id="dZi-9q-K9C"/>
                             <constraint firstAttribute="trailing" secondItem="4KJ-RM-E4q" secondAttribute="trailing" id="jO2-6X-Hye"/>
                             <constraint firstItem="154-vQ-MIf" firstAttribute="leading" secondItem="TWB-cP-aHZ" secondAttribute="leading" id="kFN-c0-qHR"/>
                             <constraint firstItem="4KJ-RM-E4q" firstAttribute="top" secondItem="TWB-cP-aHZ" secondAttribute="top" id="nvg-qB-ZIU"/>
                             <constraint firstItem="4KJ-RM-E4q" firstAttribute="leading" secondItem="TWB-cP-aHZ" secondAttribute="leading" id="vjp-3s-Lwr"/>
-                            <constraint firstAttribute="bottom" secondItem="zUa-zn-oA2" secondAttribute="bottom" constant="43" id="zEs-Do-rcM"/>
                         </constraints>
                     </view>
                 </subviews>

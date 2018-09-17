@@ -41,6 +41,19 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBOutlet var leftStackView: UIView!
     @IBOutlet var rightStackView: UIView!
     
+    @IBOutlet var appetizersLabel: UILabel!
+    @IBOutlet var andSidesLabel: UILabel!
+    @IBOutlet var gourmetLabel: UILabel!
+    @IBOutlet var burgersLabel: UILabel!
+    @IBOutlet var sandwhichesLabel: UILabel!
+    @IBOutlet var andDogsLabel: UILabel!
+    @IBOutlet var soupLabel: UILabel!
+    @IBOutlet var andChiliLabel: UILabel!
+    @IBOutlet var entreesLabel: UILabel!
+    @IBOutlet var andFishLabel: UILabel!
+    @IBOutlet var littleLabel: UILabel!
+    @IBOutlet var blazersLabel: UILabel!
+    
     var isButtonActive: Bool = false
     var images: [UIImage] = [#imageLiteral(resourceName: "Burger_option_9"),#imageLiteral(resourceName: "Burger_option_1"),#imageLiteral(resourceName: "Burger_option_2"),#imageLiteral(resourceName: "Burger_option_3"),#imageLiteral(resourceName: "Burger_option_4"),#imageLiteral(resourceName: "Burger_option_5"),#imageLiteral(resourceName: "Burger_option_6"),#imageLiteral(resourceName: "Burger_option_7"),#imageLiteral(resourceName: "Burger_option_8"),#imageLiteral(resourceName: "Burger_option_9"),#imageLiteral(resourceName: "Burger_option_1"),#imageLiteral(resourceName: "Burger_option_2"),#imageLiteral(resourceName: "Burger_option_3"),#imageLiteral(resourceName: "Burger_option_4"),#imageLiteral(resourceName: "Burger_option_5"),#imageLiteral(resourceName: "Burger_option_6"),#imageLiteral(resourceName: "Burger_option_7"),#imageLiteral(resourceName: "Burger_option_8"),#imageLiteral(resourceName: "Burger_option_9"),#imageLiteral(resourceName: "Burger_option_1"),#imageLiteral(resourceName: "Burger_option_2"),#imageLiteral(resourceName: "Burger_option_3"),#imageLiteral(resourceName: "Burger_option_4"),#imageLiteral(resourceName: "Burger_option_5"),#imageLiteral(resourceName: "Burger_option_6"),#imageLiteral(resourceName: "Burger_option_7"),#imageLiteral(resourceName: "Burger_option_8")]
     var numCount: [Int] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
@@ -238,6 +251,7 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         questionImage.isHidden = false
         currentBuildPage = "ChooseBun"
         buildBurgerCollectionView.isHidden = true
+        pageScrollerView.isHidden = true
     }
     
     @IBAction func minusButtonTapped(_ sender: UIButton) {
@@ -262,6 +276,9 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
+        if nextButton.titleLabel?.text == "ORDER" {
+            nextButton.setTitle("NEXT", for: UIControlState.normal)
+        }
         if currentBuildPage == "Sides" {
             chooseBunLabel.text = "Choose your condiment:"
             currentBuildPage = "Condiment"
@@ -281,7 +298,6 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         else if currentBuildPage == "Meat" {
             chooseBunLabel.text = "Choose your bun:"
             currentBuildPage = "ChooseBun"
-            nextButton.setTitle("ORDER", for: UIControlState.normal)
         }
         else if currentBuildPage == "ChooseBun" {
             buildBurgerCollectionView.isHidden = true
@@ -306,6 +322,7 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         toppingCount = [0,0,0]
         condimentCount = [0,0]
         sidesCount = [0,0]
+        pageScrollerView.isHidden = false
     }
     
     @IBAction func nextButtonPressed(_ sender: UIButton) {
@@ -336,11 +353,11 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
             clearAllData()
             customizeView.isHidden = true
             burgerCollectionView.isHidden = false
-            //modify this because there are different sections now
             let cell = burgerCollectionView.cellForItem(at: IndexPath(row: senderTagOnAdd, section: 0)) as! BurgerCollectionViewCell
             numCount[senderTagOnAdd] = numCount[senderTagOnAdd] + 1
             cell.countLabel.text = String(numCount[senderTagOnAdd])
             cell.countLabel.alpha = 1
+            pageScrollerView.isHidden = false
         }
         buildBurgerCollectionView.reloadData()
     }
@@ -424,12 +441,11 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         appetizersButton.imageView?.contentMode = .scaleAspectFit
         appetizersButton.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
         returnInactiveIcons(buttonID: 0)
-        servingSoonView.isHidden = false
-        burgerCollectionView.isHidden = true
-        foodTopLabel.isHidden = true
-        customizeView.isHidden = true
+        exceptGourmetButtonSettings()
         clearAllData()
-        pageScrollerView.isHidden = true
+        resetToFadedText()
+        appetizersLabel.textColor = gold
+        andSidesLabel.textColor = gold
     }
     
     @IBAction func gourmetButtonPressed(_ sender: UIButton) {
@@ -441,6 +457,9 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         burgerCollectionView.isHidden = false
         foodTopLabel.isHidden = false
         pageScrollerView.isHidden = false
+        resetToFadedText()
+        gourmetLabel.textColor = gold
+        burgersLabel.textColor = gold
     }
     
     @IBAction func sandwhichButtonPressed(_ sender: UIButton) {
@@ -448,12 +467,11 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         sandwhichButton.imageView?.contentMode = .scaleAspectFit
         sandwhichButton.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
         returnInactiveIcons(buttonID: 2)
-        servingSoonView.isHidden = false
-        burgerCollectionView.isHidden = true
-        foodTopLabel.isHidden = true
-        customizeView.isHidden = true
+        exceptGourmetButtonSettings()
         clearAllData()
-        pageScrollerView.isHidden = true
+        resetToFadedText()
+        sandwhichesLabel.textColor = gold
+        andDogsLabel.textColor = gold
     }
     
     @IBAction func soupButtonPressed(_ sender: UIButton) {
@@ -461,12 +479,11 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         soupButton.imageView?.contentMode = .scaleAspectFit
         soupButton.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
         returnInactiveIcons(buttonID: 3)
-        servingSoonView.isHidden = false
-        burgerCollectionView.isHidden = true
-        foodTopLabel.isHidden = true
-        customizeView.isHidden = true
+        exceptGourmetButtonSettings()
         clearAllData()
-        pageScrollerView.isHidden = true
+        resetToFadedText()
+        soupLabel.textColor = gold
+        andChiliLabel.textColor = gold
     }
     
     
@@ -475,12 +492,11 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         entreeButton.imageView?.contentMode = .scaleAspectFit
         entreeButton.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
         returnInactiveIcons(buttonID: 4)
-        servingSoonView.isHidden = false
-        burgerCollectionView.isHidden = true
-        foodTopLabel.isHidden = true
-        customizeView.isHidden = true
+        exceptGourmetButtonSettings()
         clearAllData()
-        pageScrollerView.isHidden = true
+        resetToFadedText()
+        entreesLabel.textColor = gold
+        andFishLabel.textColor = gold
     }
     
     @IBAction func blazersButtonPressed(_ sender: UIButton) {
@@ -488,15 +504,22 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         blazersButton.imageView?.contentMode = .scaleAspectFit
         blazersButton.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
         returnInactiveIcons(buttonID: 5)
+        exceptGourmetButtonSettings()
+        clearAllData()
+        resetToFadedText()
+        littleLabel.textColor = gold
+        blazersLabel.textColor = gold
+    }
+    
+    // MARK: collectionView Layout, etc functions, and viewdidLoad/Appear
+    
+    func exceptGourmetButtonSettings() {
         servingSoonView.isHidden = false
         burgerCollectionView.isHidden = true
         foodTopLabel.isHidden = true
         customizeView.isHidden = true
-        clearAllData()
         pageScrollerView.isHidden = true
     }
-    
-    // MARK: collectionView Layout, etc functions, and viewdidLoad/Appear
     
     func clearAllData() {
         bunCount = [0,0,0]
@@ -505,6 +528,21 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         toppingCount = [0,0,0]
         condimentCount = [0,0]
         sidesCount = [0,0]
+    }
+    
+    func resetToFadedText() {
+        appetizersLabel.textColor = fadedRed
+        andSidesLabel.textColor = fadedRed
+        gourmetLabel.textColor = fadedRed
+        burgersLabel.textColor = fadedRed
+        sandwhichesLabel.textColor = fadedRed
+        andDogsLabel.textColor = fadedRed
+        soupLabel.textColor = fadedRed
+        andChiliLabel.textColor = fadedRed
+        entreesLabel.textColor = fadedRed
+        andFishLabel.textColor = fadedRed
+        littleLabel.textColor = fadedRed
+        blazersLabel.textColor = fadedRed
     }
     
     func returnInactiveIcons(buttonID: Int) {
@@ -542,9 +580,11 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     let gold: UIColor = UIColor(red: 208.0/255.0, green: 161.0/255.0, blue: 50.0/255.0, alpha: 1.0)
     
+    let fadedRed: UIColor = UIColor(red: 62.0/255.0, green: 13.0/255.0, blue: 1.0/255.0, alpha: 1.0)
+    
     //Pagination Setup
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let pageWidth = scrollView.frame.size.width
+        let pageWidth = scrollView.frame.size.width //change this value so it scrolls appropriately
         let page = Int(floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1)
         print("page = \(page)")
         pageOneLabel.backgroundColor = gold
@@ -579,7 +619,9 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         gourmetImage.setImage(#imageLiteral(resourceName: "Burger_Icon_active"), for: UIControlState.normal)
         gourmetImage.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
         servingSoonView.isHidden = true
-        
+        resetToFadedText() //text not being set to right color in IB so had to do it programmatically
+        gourmetLabel.textColor = gold
+        burgersLabel.textColor = gold
         //registering and setting datasource/delegate for burgerCollectionView/Cell
         burgerCollectionView.register(UINib(nibName: "BurgerCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "BurgerCollectionViewCell")
         burgerCollectionView.dataSource = self
@@ -587,10 +629,10 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         self.burgerCollectionView.delegate = self
         if let layout = burgerCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .horizontal
-            layout.minimumLineSpacing = 26 //in between columns
+            layout.minimumLineSpacing = 34 //in between columns
             layout.minimumInteritemSpacing = 12 //in between rows
             //sectionInset lets me modify the distance from the outer edge of the collectionview to the cell from all 4 directions
-            layout.sectionInset = UIEdgeInsetsMake(0, 26, 0, 26)
+            layout.sectionInset = UIEdgeInsetsMake(0, 21, 0, 16)
         if let layout = buildBurgerCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.sectionInset = UIEdgeInsetsMake(10, 18, 0, 18)
             }
@@ -633,7 +675,6 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
 
-    var intArray: [Int] = [6,7,8]
     
     
 }
@@ -641,19 +682,11 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // MARK: Extensions(UICollectionViewDataSource)
 extension FoodViewController: UICollectionViewDataSource {
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        if collectionView == burgerCollectionView {
-            return 3
-        }
-        else {
-            return 1
-        }
-    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //use if statement to check which uiCollectionView is being passed through
         if collectionView == burgerCollectionView {
-            return images.count/3
+            return images.count
         }
         else {
             if currentBuildPage == "ChooseBun" {
@@ -692,7 +725,7 @@ extension FoodViewController: UICollectionViewDataSource {
             cell.minusButton.addTarget(self, action: #selector(minusButtonTapped), for: UIControlEvents.touchUpInside)
             cell.minusButton.backgroundColor = .clear
             cell.countLabel.tag = indexPath.row
-            cell.countLabel.layer.cornerRadius = 10
+            cell.countLabel.layer.cornerRadius = 20
             cell.countLabel.clipsToBounds = true
             cell.countLabel.text = String(numCount[indexPath.row])
             cell.countLabel.alpha = 0.0

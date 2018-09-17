@@ -12,7 +12,6 @@ class TotalViewController: UIViewController {
     
     
     @IBAction func homeButton(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
     }
     
     @IBOutlet weak var orderSubmitLabel: UILabel!
@@ -20,7 +19,6 @@ class TotalViewController: UIViewController {
     @IBAction func submitOrderButton(_ sender: UIButton) {
         orderSubmitLabel.alpha = 1.0
         UIView.animate(withDuration: 2, delay: 0, options: [.curveEaseInOut, .allowUserInteraction], animations: {self.orderSubmitLabel.alpha = 0.0}, completion: nil)
-        
     }
     
     
@@ -32,6 +30,5 @@ class TotalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
     
 }

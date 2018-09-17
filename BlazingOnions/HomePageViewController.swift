@@ -119,7 +119,7 @@ class HomePageViewController: UIViewController {
     @IBOutlet weak var instaImages: UIImageView!
     
     var specialImageArray: [String] = ["Specials_banner_1", "Specials_banner_2"]
-    var instaImageArray: [String] = ["insta_image_1", "insta_image_2", "insta_image_3", "insta_image_4"]
+    var instaImageArray: [String] = ["insta_image_4", "insta_image_1", "insta_image_2", "insta_image_3"]
     
     var isAnimating: Bool = false
     var specialImageArrayCount: Int = 0
@@ -156,7 +156,7 @@ class HomePageViewController: UIViewController {
         serverAlertedView.isHidden = true
         specialsImages.image = UIImage.init(named: "Specials_banner_1")
         specialsTimer = Timer.scheduledTimer(timeInterval: 8, target: self, selector: #selector(onSpecialsBannerTransition), userInfo: nil, repeats: true)
-        instaImages.image = UIImage.init(named: "insta_image_1")
+        instaImages.image = UIImage.init(named: "insta_image_4")
         instaTimer = Timer.scheduledTimer(timeInterval: 4.5, target: self, selector: #selector(onInstaImageTransition), userInfo: nil, repeats: true)
     }
     
