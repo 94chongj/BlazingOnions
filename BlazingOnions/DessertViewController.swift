@@ -12,6 +12,7 @@ class DessertViewController: UIViewController {
     
     
     
+    @IBOutlet var servingSoonView: UIView!
     @IBOutlet var serverAlertedView: UIView!
     @IBOutlet var waiterButton: UIButton!
     @IBOutlet weak var dessertButton: UIButton!
@@ -87,6 +88,7 @@ class DessertViewController: UIViewController {
     @IBAction func hideServerAlertedView(_ sender: UIButton) {
         serverAlertedView.isHidden = true
         waiterDataSource.sharedManager.serverViewStays = false
+        servingSoonView.isHidden = false
     }
     
     
@@ -106,6 +108,7 @@ class DessertViewController: UIViewController {
         dessertButton.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
         waiterButton.alpha = 1
         if waiterDataSource.sharedManager.serverViewStays == true {
+            servingSoonView.isHidden = true
             serverAlertedView.isHidden = false
         }
         if waiterDataSource.sharedManager.waiterButtonBool == true {

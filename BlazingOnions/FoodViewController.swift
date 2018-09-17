@@ -336,6 +336,7 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
             clearAllData()
             customizeView.isHidden = true
             burgerCollectionView.isHidden = false
+            //modify this because there are different sections now
             let cell = burgerCollectionView.cellForItem(at: IndexPath(row: senderTagOnAdd, section: 0)) as! BurgerCollectionViewCell
             numCount[senderTagOnAdd] = numCount[senderTagOnAdd] + 1
             cell.countLabel.text = String(numCount[senderTagOnAdd])
@@ -589,7 +590,7 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
             layout.minimumLineSpacing = 26 //in between columns
             layout.minimumInteritemSpacing = 12 //in between rows
             //sectionInset lets me modify the distance from the outer edge of the collectionview to the cell from all 4 directions
-            layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 26)
+            layout.sectionInset = UIEdgeInsetsMake(0, 26, 0, 26)
         if let layout = buildBurgerCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.sectionInset = UIEdgeInsetsMake(10, 18, 0, 18)
             }
@@ -632,17 +633,27 @@ class FoodViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
 
+    var intArray: [Int] = [6,7,8]
     
-    // MARK: Extensions(UICollectionViewDataSource)
     
 }
 
+    // MARK: Extensions(UICollectionViewDataSource)
 extension FoodViewController: UICollectionViewDataSource {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        if collectionView == burgerCollectionView {
+            return 3
+        }
+        else {
+            return 1
+        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //use if statement to check which uiCollectionView is being passed through
         if collectionView == burgerCollectionView {
-            return images.count
+            return images.count/3
         }
         else {
             if currentBuildPage == "ChooseBun" {
@@ -666,6 +677,7 @@ extension FoodViewController: UICollectionViewDataSource {
         }
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == burgerCollectionView {
             //first Burger Collection View showing all burgers
@@ -681,7 +693,6 @@ extension FoodViewController: UICollectionViewDataSource {
             cell.minusButton.backgroundColor = .clear
             cell.countLabel.tag = indexPath.row
             cell.countLabel.layer.cornerRadius = 10
-            //Button is not fully visible because colors?
             cell.countLabel.clipsToBounds = true
             cell.countLabel.text = String(numCount[indexPath.row])
             cell.countLabel.alpha = 0.0

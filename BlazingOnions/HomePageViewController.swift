@@ -10,6 +10,7 @@ import UIKit
 
 class HomePageViewController: UIViewController {
     
+    @IBOutlet var majorButtonBorderView: UIView!
     @IBOutlet var twitterScrollView: UIScrollView!
     @IBOutlet var twitterImageView: UIImageView!
     
@@ -117,55 +118,46 @@ class HomePageViewController: UIViewController {
     
     @IBOutlet weak var instaImages: UIImageView!
     
-    var specials_1: UIImage!
-    var specials_2: UIImage!
-    var specialImageArray: [UIImage]!
-    var instaImage_1: UIImage!
-    var instaImage_2: UIImage!
-    var instaImage_3: UIImage!
-    var instaImage_4: UIImage!
-    var instaImageArray: [UIImage]!
+    var specialImageArray: [String] = ["Specials_banner_1", "Specials_banner_2"]
+    var instaImageArray: [String] = ["insta_image_1", "insta_image_2", "insta_image_3", "insta_image_4"]
     
+    var isAnimating: Bool = false
+    var specialImageArrayCount: Int = 0
+    var specialsTimer = Timer()
+    var instaImageCount: Int = 0
+    var instaTimer = Timer()
     
-    //continues to call UIViewTransition indefinitely while going through array of images
-    func animatePoster(images: [UIImage], count: Int = 0) {
-        
-        UIView.transition(with: instaImages, duration: 6, options: [.curveEaseInOut, .transitionCrossDissolve], animations: {
-            self.instaImages.image = self.instaImageArray[count]
-        }, completion: {
-            finished in
-            if (count == self.instaImageArray.count - 1)  // Last image
-            {
-                self.animatePoster(images: self.instaImageArray)
-            }
-            else
-            {
-                self.animatePoster(images: self.instaImageArray, count: count + 1)
-            }
-        })
+    @objc func onSpecialsBannerTransition() {
+        if specialImageArrayCount < specialImageArray.count - 1 {
+            specialImageArrayCount = specialImageArrayCount + 1
+        }
+        else {
+            specialImageArrayCount = 0
+        }
+        UIView.transition(with: self.specialsImages, duration: 1.5, options: .transitionCrossDissolve, animations: {self.specialsImages.image = UIImage.init(named: self.specialImageArray[self.specialImageArrayCount])}, completion: nil)
     }
+    
+    @objc func onInstaImageTransition() {
+        if instaImageCount < instaImageArray.count - 1 {
+            instaImageCount = instaImageCount + 1
+        }
+        else {
+            instaImageCount = 0
+        }
+        UIView.transition(with: self.instaImages, duration: 1.5, options: .transitionCrossDissolve, animations: {self.instaImages.image = UIImage.init(named: self.instaImageArray[self.instaImageCount])}, completion: nil)
+    }
+    
+    
+    let borderColor: UIColor = UIColor(red: 62.0/255.0, green: 13.0/255.0, blue: 1.0/255.0, alpha: 1)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         serverAlertedView.isHidden = true
-        specials_1 = #imageLiteral(resourceName: "Specials_banner_1")
-        specials_2 = #imageLiteral(resourceName: "Specials_banner_2")
-        specialImageArray = [specials_1, specials_2]
-        UIImageView.transition(with: specialsImages, duration: 11, options: [.repeat, .autoreverse, .curveEaseInOut, .transitionCrossDissolve], animations: {
-            if self.specialsImages.image == self.specials_1{
-                self.specialsImages.image = self.specialImageArray[1]
-            }
-            else {
-                self.specialsImages.image = self.specialImageArray[0]
-            }}, completion: nil)
-        
-        instaImage_1 = #imageLiteral(resourceName: "insta_image_1")
-        instaImage_2 = #imageLiteral(resourceName: "insta_image_2")
-        instaImage_3 = #imageLiteral(resourceName: "insta_image_3")
-        instaImage_4 = #imageLiteral(resourceName: "insta_image_4")
-        instaImageArray = [instaImage_1, instaImage_2, instaImage_3, instaImage_4]
-        
-        animatePoster(images: instaImageArray)
+        specialsImages.image = UIImage.init(named: "Specials_banner_1")
+        specialsTimer = Timer.scheduledTimer(timeInterval: 8, target: self, selector: #selector(onSpecialsBannerTransition), userInfo: nil, repeats: true)
+        instaImages.image = UIImage.init(named: "insta_image_1")
+        instaTimer = Timer.scheduledTimer(timeInterval: 4.5, target: self, selector: #selector(onInstaImageTransition), userInfo: nil, repeats: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -180,10 +172,10 @@ class HomePageViewController: UIViewController {
             waiterButton.imageEdgeInsets = UIEdgeInsets(top: -12, left: -12, bottom: -12, right: -12)
             UIButton.animate(withDuration: 1, delay: 0, options: [.autoreverse, .repeat,.allowUserInteraction], animations: {self.waiterButton.alpha = 0.1}, completion: nil)
         }
+        
     }
     
     
 }
-
 
 
