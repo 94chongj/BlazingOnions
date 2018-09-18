@@ -123,25 +123,13 @@
 		AB6AF12421404A7F006444FA /* BlazingOnions */ = {
 			isa = PBXGroup;
 			children = (
-				AB6AF12521404A7F006444FA /* AppDelegate.swift */,
-				AB6AF12721404A7F006444FA /* ViewController.swift */,
-				AB6AF12921404A7F006444FA /* Main.storyboard */,
+				AB7FBE2A2151502800FC09D8 /* Model */,
+				AB7FBE292151502600FC09D8 /* View */,
+				AB7FBE282151502300FC09D8 /* Controller */,
 				AB6AF12C21404A80006444FA /* Assets.xcassets */,
 				AB6AF12E21404A80006444FA /* LaunchScreen.storyboard */,
 				AB6AF13121404A80006444FA /* Info.plist */,
-				ABF260662141A31C0003EF1F /* HomePageViewController.swift */,
-				ABADF9B121430988002B2E0C /* totalViewController.swift */,
-				ABADF9B321433445002B2E0C /* FoodViewController.swift */,
-				ABADF9B5214343EE002B2E0C /* DrinksViewController.swift */,
-				ABADF9B721434412002B2E0C /* DessertViewController.swift */,
 				ABAA0234214833FB00C0A76B /* agency-fb-bold_[allfont.net].ttf */,
-				ABAA0236214866CB00C0A76B /* DrinksCollectionViewCell.swift */,
-				ABAA0237214866CB00C0A76B /* DrinksCollectionViewCell.xib */,
-				ABAA023A214973E800C0A76B /* BurgerCollectionViewCell.swift */,
-				ABAA023B214973E800C0A76B /* BurgerCollectionViewCell.xib */,
-				ABAA023E2149DAE900C0A76B /* buildBurgerCollectionViewCell.swift */,
-				ABAA023F2149DAE900C0A76B /* buildBurgerCollectionViewCell.xib */,
-				ABAA0242214C247B00C0A76B /* waiterDataSource.swift */,
 			);
 			path = BlazingOnions;
 			sourceTree = "<group>";
@@ -162,6 +150,42 @@
 				AB6AF14721404A80006444FA /* Info.plist */,
 			);
 			path = BlazingOnionsUITests;
+			sourceTree = "<group>";
+		};
+		AB7FBE282151502300FC09D8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				ABF260662141A31C0003EF1F /* HomePageViewController.swift */,
+				ABADF9B321433445002B2E0C /* FoodViewController.swift */,
+				ABADF9B121430988002B2E0C /* totalViewController.swift */,
+				ABADF9B5214343EE002B2E0C /* DrinksViewController.swift */,
+				ABADF9B721434412002B2E0C /* DessertViewController.swift */,
+				AB6AF12721404A7F006444FA /* ViewController.swift */,
+				AB6AF12521404A7F006444FA /* AppDelegate.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		AB7FBE292151502600FC09D8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ABAA023E2149DAE900C0A76B /* buildBurgerCollectionViewCell.swift */,
+				ABAA023A214973E800C0A76B /* BurgerCollectionViewCell.swift */,
+				ABAA0236214866CB00C0A76B /* DrinksCollectionViewCell.swift */,
+				AB6AF12921404A7F006444FA /* Main.storyboard */,
+				ABAA0237214866CB00C0A76B /* DrinksCollectionViewCell.xib */,
+				ABAA023B214973E800C0A76B /* BurgerCollectionViewCell.xib */,
+				ABAA023F2149DAE900C0A76B /* buildBurgerCollectionViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AB7FBE2A2151502800FC09D8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ABAA0242214C247B00C0A76B /* waiterDataSource.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

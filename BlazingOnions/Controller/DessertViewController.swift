@@ -79,6 +79,9 @@ class DessertViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         serverAlertedView.isHidden = true
+        if waiterDataSource.sharedManager.serverViewStays == true {
+            servingSoonView.isHidden = true
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
